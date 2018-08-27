@@ -1,5 +1,5 @@
 # Leetcode
-# author: ZBurNIngram
+# Author: ZBurNIngram
 practice makes perfect
 
 algorithm:
