@@ -1,4 +1,4 @@
-# leetcode
+# Leetcode
 # author: ZBurNIngram
 practice makes perfect
 
