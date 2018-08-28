@@ -7,4 +7,4 @@ algorithm:
 	(回文Not Done)
 	(maxArea Not Done)
 	total not DONE: 2
-	total accepted: 7
+	total accepted: 8
