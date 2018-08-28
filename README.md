@@ -9,5 +9,5 @@ algorithm:
 		(回文)
 		(maxArea)
 
-	total not DONE: 2
+		total not DONE: 2
 	total accepted: 8
