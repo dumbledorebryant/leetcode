@@ -21,12 +21,20 @@ public class lc372 {
     }
 
     public int mypower(int a, int k){
+        if (k == 0) return 1;
         a %= mod;
-        int ans = 1;
-        for (int i = 0; i < k; i++){
-            ans *= a;
-            ans %= mod;
+        if (k % 2 == 0){
+            int half = mypower(a, k/2);
+            return ((half % mod) * (half % mod)) % mod;
         }
-        return ans;
+        else {
+            return (a * mypower(a, k - 1)) % mod;
+        }
+        //int ans = 1;
+        //for (int i = 0; i < k; i++){
+        //    ans *= a;
+        //    ans %= mod;
+        //}
+        //return ans;
     }
 }
