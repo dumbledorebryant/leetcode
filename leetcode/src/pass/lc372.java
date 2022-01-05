@@ -30,9 +30,9 @@ public class lc372 {
         else {
             return (a * mypower(a, k - 1)) % mod;
         }
-        //int ans = 1;
-        //for (int i = 0; i < k; i++){
-        //    ans *= a;
+        //int ans = b;
+        //for (int i = 1; i < k; i++){
+        //    ans *= b;
         //    ans %= mod;
         //}
         //return ans;
