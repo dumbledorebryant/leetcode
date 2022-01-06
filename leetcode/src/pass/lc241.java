@@ -20,30 +20,17 @@ public class lc241 {
         }
         for (int i = left + 1; i < right; i += 2){
             char oper = chrs[i];
-            if (oper == '*'){
+            if (oper == '*' || oper == '+' || oper == '-'){
                 List<Integer> leftnum = collect(chrs, left, i - 1);
                 List<Integer> rightnum = collect(chrs, i + 1, right);
                 for (int lnum : leftnum){
                     for (int rnum : rightnum) {
-                        ans.add(lnum * rnum);
-                    }
-                }
-            }
-            else if (oper == '+') {
-                List<Integer> leftnum = collect(chrs, left, i - 1);
-                List<Integer> rightnum = collect(chrs, i + 1, right);
-                for (int lnum : leftnum){
-                    for (int rnum : rightnum) {
-                        ans.add(lnum + rnum);
-                    }
-                }
-            }
-            else {
-                List<Integer> leftnum = collect(chrs, left, i - 1);
-                List<Integer> rightnum = collect(chrs, i + 1, right);
-                for (int lnum : leftnum){
-                    for (int rnum : rightnum) {
-                        ans.add(lnum - rnum);
+                        if (oper == '*')
+                            ans.add(lnum * rnum);
+                        if (oper == '+')
+                            ans.add(lnum + rnum);
+                        if (oper == '-')
+                            ans.add(lnum - rnum);
                     }
                 }
             }
