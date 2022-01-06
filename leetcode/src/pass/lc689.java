@@ -16,23 +16,22 @@ public class lc689 {
         return backtrace(nums, k, 0);
     }
     public boolean backtrace(int[] nums, int k, int pre){
-        int size = visited.size();
-        int len = nums.length;
-        if (k == 0 && size == len){
-            return true;
-        }
-        if (k == 0) return false;
-        if (size == len) return false;
-        for (int num : nums){
-            int cur = pre + num;
-            if (!visited.contains(num) && cur == sub){
-                visited.add(num);
-                backtrace(nums, k - 1, 0);
-            }
-            else if (!visited.contains(num) && cur < sub){
-                visited.add(num);
-                backtrace(nums, k, sub - cur);
-            }
+        if (k == 0) return true;
+        int length = nums.length;
+        for (int i = 0; i < length; i++){
+            int num = nums[i];
+            if (!visited.contains(i)){
+                int cur = pre + num;
+                if (cur == sub) {
+                    visited.add(i);
+                    if (!backtrace(nums, k - 1, 0)) visited.remove(i);
+                }
+                else if (cur < num){
+                    visited.add(i);
+                    if (!backtrace(nums, k, cur)) visited.remove(i);
+                }
+                else continue;
+            } 
             else continue;
         }
         return false;
