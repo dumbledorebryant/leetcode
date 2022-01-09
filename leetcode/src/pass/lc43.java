@@ -1,25 +1,24 @@
 package pass;
 
 public class lc43 {
-    public String multiply(String num1, String num2) {
-        int m = num1.length();
-        int n = num2.length();
-        int[] dp = new int[m + n];
-
-        for (int i = 0; i < m; i++){
-            for (int j = 0; j < n; j++){
-                int a = Integer.valueOf(num1.substring(i, i + 1));
-                int b = Integer.valueOf(num2.substring(j, j + 1));
-                int num = a * b;
-                int sum = num + dp[i + j];
-                dp[i + j] += (sum % 10);
-                dp[i + j + 1] += (sum / 10);
+    public String multiply(String n1, String n2) {
+        int n = n1.length(), m = n2.length();
+        int[] res = new int[n + m];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                int a = n1.charAt(i) - '0';
+                int b = n2.charAt(j) - '0';
+                int r = a * b;
+                r += res[i + j + 1];
+                res[i + j + 1] = r % 10;
+                res[i + j] += r / 10;
             }
         }
-    
-        String str = "";
-        for (int i = m + n - 1; i >= 0; i--) str += String.valueOf(dp[i]);
-        int valid = Integer.parseInt(str);
-        return String.valueOf(valid);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n + m; i++) {
+            if (sb.length() == 0 && res[i] == 0) continue;
+            sb.append(res[i]);
+        }
+        return sb.length() == 0 ? "0" : sb.toString();
     }
 }
