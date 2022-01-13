@@ -10,6 +10,7 @@ public class lc45 {
         Arrays.fill(dp, length);
         return dp(nums, 0);
     }
+    
     public int dp(int[] nums, int index){
         int len = nums.length;
         if (index >= len - 1) return 0;

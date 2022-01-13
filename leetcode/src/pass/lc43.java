@@ -1,24 +1,26 @@
 package pass;
 
 public class lc43 {
-    public String multiply(String n1, String n2) {
-        int n = n1.length(), m = n2.length();
-        int[] res = new int[n + m];
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = m - 1; j >= 0; j--) {
-                int a = n1.charAt(i) - '0';
-                int b = n2.charAt(j) - '0';
-                int r = a * b;
-                r += res[i + j + 1];
-                res[i + j + 1] = r % 10;
-                res[i + j] += r / 10;
+    public String multiply(String num1, String num2) {
+        int n1 = num1.length(),n2 = num2.length();
+        int arr[] = new int[n1+n2];
+        for(int i = n1-1;i>=0;i--){
+            for(int j = n2-1;j>=0;j--){
+                int c1 = num1.charAt(i) - '0';
+                int c2 = num2.charAt(j) - '0';
+                arr[i+j+1] += c1 * c2;
             }
         }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n + m; i++) {
-            if (sb.length() == 0 && res[i] == 0) continue;
-            sb.append(res[i]);
+        
+        int carry = 0;
+        for(int i = arr.length-1;i>=0;i--){
+            int temp = (arr[i] + carry) % 10;
+            carry = (arr[i] + carry) / 10;
+            arr[i] = temp;
         }
-        return sb.length() == 0 ? "0" : sb.toString();
+        StringBuilder res = new StringBuilder();
+        for (int i : arr)res.append(i);
+        while(res.length() > 0 && res.charAt(0) == '0') res.deleteCharAt(0);
+        return res.length() == 0 ? "0" : res.toString();
     }
 }
