@@ -1,47 +1,40 @@
 package pass;
 import java.util.*;
 
-import javax.swing.Popup;
-
 public class lc316 {
     public String removeDuplicateLetters(String s) {
-        char[] chrs = s.toCharArray();
-        int length = chrs.length;
-        Map<Character, Integer> map = new HashMap<>();
-        for (char ch : chrs){
-            map.put(ch, 1 + map.getOrDefault(ch, 0));
+        Stack<Character> stk = new Stack<>();
+
+        // 维护一个计数器记录字符串中字符的数量
+        // 因为输入为 ASCII 字符，大小 256 够用了
+        int[] count = new int[256];
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i)]++;
         }
-        Stack<Integer> stack = new Stack<>();
-        stack.add(0);
-        int index = 1;
-        while (!stack.isEmpty() && index < length){
-            char ch = chrs[index];
-            int topind = stack.peek();
-            char top = chrs[topind];
-            if (ch < top){
-                // not duplicated
-                if (map.get(top) == 1){
-                    // keep it
-                    stack.add(index);
-                    index++;
-                    map.put(top, map.get(ch) - 1);
+
+        boolean[] inStack = new boolean[256];
+        for (char c : s.toCharArray()) {
+            // 每遍历过一个字符，都将对应的计数减一
+            count[c]--;
+
+            if (inStack[c]) continue;
+
+            while (!stk.isEmpty() && stk.peek() > c) {
+                // 若之后不存在栈顶元素了，则停止 pop
+                if (count[stk.peek()] == 0) {
+                    break;
                 }
-                else stack.pop();
-                if (stack.isEmpty()){
-                    stack.add(index);
-                    index++;
-                }
+                // 若之后还有，则可以 pop
+                inStack[stk.pop()] = false;
             }
-            else {
-                stack.add(index);
-                index++;
-            }
+            stk.push(c);
+            inStack[c] = true;
         }
-        String ans = "";
-        while (!stack.isEmpty()){
-            int ind = stack.pop();
-            ans += String.valueOf(s.substring(ind, ind + 1));
+
+        StringBuilder sb = new StringBuilder();
+        while (!stk.empty()) {
+            sb.append(stk.pop());
         }
-        return ans;
+        return sb.reverse().toString();
     }
 }
