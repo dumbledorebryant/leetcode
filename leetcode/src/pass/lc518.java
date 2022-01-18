@@ -12,6 +12,7 @@ public class lc518 {
                 dp[i] += dp[i - coin];
             }
         }
+        
         return dp[amount];
     }
 }
