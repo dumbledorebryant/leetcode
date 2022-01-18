@@ -7,10 +7,9 @@ public class lc518 {
         dp[0] = 1;
         
         for (int j = 0; j < n; j++){
-            for (int i = 1; i <= amount; i++){
-                int coin = coins[j];
-                if (i - coin >= 0)
-                    dp[i] += dp[i - coin];
+            int coin = coins[j];
+            for (int i = coin; i <= amount; i++){
+                dp[i] += dp[i - coin];
             }
         }
         return dp[amount];
