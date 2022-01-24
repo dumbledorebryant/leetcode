@@ -2,21 +2,23 @@ package pass;
 
 public class lc41 {
     public int firstMissingPositive(int[] nums) {
-        int length = nums.length;
-        int cur = 0;
-        int need = 1;
-        for (int i = 1; i < length; i++){
-            int num = nums[i];
-            if (num >= cur) continue;
-            else {
-                if (num < need) continue;
-                else if (num == need){
-                    need++;
-                    if (need == cur){
-                        need = cur + 1;
-                    }
-                }
+        int len=nums.length;
+        for(int i=0;i<len;i++){
+            if(nums[i]<=0){
+                nums[i]=len+1;
             }
         }
+        for(int i=0;i<len;i++){
+            int index=Math.abs(nums[i])-1; 
+            if(index<len && nums[index]>0){
+                nums[index]=-nums[index];
+            }
+        }
+        for(int i=0;i<len;i++){
+            if(nums[i]>0){
+                return i+1;
+            }
+        }
+        return len+1;
     }
 }
