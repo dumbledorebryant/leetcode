@@ -12,17 +12,13 @@ public class lc33 {
             int mn = nums[mid];
             if (mn == target) return mid;
             if (mn <= rn){
-                // sorted
-                if (target > mn && target <= right) {left = mid + 1;System.out.println("a");}
-                else {right = mid - 1;System.out.println("b");}
+                if (target > mn && target <= rn) {left = mid + 1;}
+                else {right = mid - 1;}
             }
             else if (ln <= mn){
-                if (target < mn && target >= ln) {right = mid - 1;System.out.println("c");}
-                else {left = mid + 1;System.out.println("d");}
+                if (target < mn && target >= ln) {right = mid - 1;}
+                else {left = mid + 1;}
             }
-            System.out.print(left);
-            System.out.print(right);
-            System.out.println("--");
         }
         return -1;
     }
