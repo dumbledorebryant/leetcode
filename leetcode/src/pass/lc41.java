@@ -19,6 +19,6 @@ public class lc41 {
                 return i+1;
             }
         }
-        return len+1;
+        return len + 1;
     }
 }
