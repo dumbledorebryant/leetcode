@@ -5,18 +5,22 @@ public class lc42 {
         int length = height.length;
         int left = 0;
         int right = length - 1;
-        int lh = 0;
-        int rh = 0;
+        int mlh = 0;
+        int mrh = 0;
         int ans = 0;
         while (left < right){
             int clh = height[left];
             int crh = height[right];
-            ans -= (Math.min(Math.min(lh, clh), Math.min(rh, crh)) * (right - left + 1));
-            ans += (Math.min(clh, crh) * (right - left - 1));
-            lh = clh;
-            rh = crh;
-            if (lh == Math.min(lh, rh)) left++;
-            else right--;
+            mlh = Math.max(mlh, clh);
+            mrh = Math.max(mrh, crh);
+            if (clh < crh){
+                ans += (mlh - clh);
+                left++;
+            }
+            else {
+                ans += (mrh - crh);
+                right--;
+            }
         }
         return ans;
     }
