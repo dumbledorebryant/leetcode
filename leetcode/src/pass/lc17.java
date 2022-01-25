@@ -25,7 +25,13 @@ public class lc17 {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++){
-            
+            String str = construct(list, 0, 0);
         }
+    }
+    public String construct(String[]list, int i, int j){
+        String str = "";
+        str += list[i].charAt(j);
+        if (j <= )
+        str += construct(list, i, j + 1);
     }
 }
