@@ -2,47 +2,65 @@ package pass;
 
 public class lc4 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        if(nums1 == null && nums2 == null){
-            return 0;
+        int n = nums1.length;
+        int m = nums2.length;
+        int left = (n + m + 1) / 2;
+        int right = (n + m + 2) / 2;
+        //将偶数和奇数的情况合并，如果是奇数，会求两次同样的 k 。
+        return (getKth(nums1, 0, n - 1, nums2, 0, m - 1, left) + getKth(nums1, 0, n - 1, nums2, 0, m - 1, right)) * 0.5;  
+    }
+    
+    private int getKth(int[] nums1, int start1, int end1, int[] nums2, int start2, int end2, int k) {
+        int len1 = end1 - start1 + 1;
+        int len2 = end2 - start2 + 1;
+        //让 len1 的长度小于 len2，这样就能保证如果有数组空了，一定是 len1 
+        if (len1 > len2) return getKth(nums2, start2, end2, nums1, start1, end1, k);
+        if (len1 == 0) return nums2[start2 + k - 1];
+
+        if (k == 1) return Math.min(nums1[start1], nums2[start2]);
+
+        int i = start1 + Math.min(len1, k / 2) - 1;
+        int j = start2 + Math.min(len2, k / 2) - 1;
+
+        if (nums1[i] > nums2[j]) {
+            return getKth(nums1, start1, end1, nums2, j + 1, end2, k - (j - start2 + 1));
         }
-        
-        if(nums1 == null){
-            int n = nums2.length;
-            return nums2[(n - 1) / 2] * 0.5 + nums2[n / 2] * 0.5;
+        else {
+            return getKth(nums1, i + 1, end1, nums2, start2, end2, k - (i - start1 + 1));
         }
-        
-        if(nums2 == null){
-            int n = nums1.length;
-            return nums1[(n - 1) / 2] * 0.5 + nums1[n / 2] * 0.5;
+    }
+
+    public double findMedian(int[] A, int[] B) {
+        int m = A.length;
+        int n = B.length;
+        if (m > n) { 
+            return findMedian(B,A); // 保证 m <= n
         }
-        
-        if(nums1.length > nums2.length){
-            return findMedianSortedArrays(nums2, nums1);
-        }
-        int m = nums1.length;
-        int n = nums2.length;
-        int l = 0;
-        int r = m;
-        while (l < r){
-            int i = (l + r)/2;
-            int j = (m + n)/2 - i;
-            if (nums1[i] < nums2[j - 1]){
-                l = i + 1;
+        int iMin = 0, iMax = m;
+        while (iMin <= iMax) {
+            int i = (iMin + iMax) / 2;
+            int j = (m + n + 1) / 2 - i;
+            if (j != 0 && i != m && B[j-1] > A[i]){ // i 需要增大
+                iMin = i + 1; 
             }
-            else r = i;
+            else if (i != 0 && j != n && A[i-1] > B[j]) { // i 需要减小
+                iMax = i - 1; 
+            }
+            else { // 达到要求，并且将边界条件列出来单独考虑
+                int maxLeft = 0;
+                if (i == 0) { maxLeft = B[j-1]; }
+                else if (j == 0) { maxLeft = A[i-1]; }
+                else { maxLeft = Math.max(A[i-1], B[j-1]); }
+                if ( (m + n) % 2 == 1 ) { return maxLeft; } // 奇数的话不需要考虑右半部分
+
+                int minRight = 0;
+                if (i == m) { minRight = B[j]; }
+                else if (j == n) { minRight = A[i]; }
+                else { minRight = Math.min(B[j], A[i]); }
+
+                return (maxLeft + minRight) / 2.0; //如果是偶数的话返回结果
+            }
         }
-        int first = l;
-        int second = (m + n)/2 - l;
-
-        int shorterleft = first == 0 ? Integer.MIN_VALUE : nums1[first - 1];
-        int shorterright = first == m ? Integer.MAX_VALUE : nums1[first];
-
-        int longerleft = second == 0 ? Integer.MIN_VALUE : nums2[second - 1];
-        int longerright = second == n ? Integer.MAX_VALUE : nums2[second];
-
-        if ((n + m) % 2 == 0){
-            return Math.max(shorterleft, longerleft) * 0.5 + Math.min(shorterright, longerright) * 0.5;
-        }
-        else return Math.min(shorterright, longerright);
+        return 0.0;
     }
 }
