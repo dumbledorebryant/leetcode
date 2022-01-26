@@ -1,10 +1,11 @@
 package pass;
 
-import java.util.HashMap;
 import java.util.*;
 
 public class lc17 {
+    List<String> ans;
     public List<String> letterCombinations(String digits) {
+        ans = new ArrayList<>();
         Map<Character, String> map = new HashMap<>();
         
         map.put('2', "abc");
@@ -17,21 +18,27 @@ public class lc17 {
         map.put('9', "wxyz");
 
         int length = digits.length();
+        if (length == 0) return ans;
+        
         String[] list = new String[length];
         for (int i = 0; i < length; i++)
         {
             list[i] = map.get(digits.charAt(i));
         }
-
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < length; i++){
-            String str = construct(list, 0, 0);
-        }
-    }
-    public String construct(String[]list, int i, int j){
+        
         String str = "";
-        str += list[i].charAt(j);
-        if (j <= )
-        str += construct(list, i, j + 1);
+        construct(list, 0, str);
+        return ans;
+    }
+    public void construct(String[]list, int i, String str){
+        if (i == list.length) {
+            ans.add(str);
+            return;
+        }
+        String cur = list[i];
+        int len = cur.length();
+        for (int m = 0; m < len; m++){
+            construct(list, i + 1, str + cur.charAt(m));
+        }
     }
 }
