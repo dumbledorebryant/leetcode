@@ -19,6 +19,7 @@ public class lc36 {
                 }
             }
         }
+        
         return true;
     }
 }
