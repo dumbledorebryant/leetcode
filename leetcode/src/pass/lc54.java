@@ -43,7 +43,6 @@ public class lc54 {
             }
             left++;
         }
-        
         return list;
     }    
 }
