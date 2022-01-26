@@ -28,6 +28,7 @@ public class lc20 {
             }
         }
         if (stack.isEmpty()) return true;
+        
         else return false;
     }
 }
