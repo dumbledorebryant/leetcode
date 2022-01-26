@@ -1,48 +1,25 @@
 package pass;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class lc75 {
-    public List<Integer> spiralOrder(int[][] matrix) 
+    public void sortColors(int[] nums) 
     {
-        List<Integer> list = new ArrayList<>();
-        int m = matrix.length;
-        int n = matrix[0].length;
-        int left = 0;
-        int right = n - 1;
-        int top = 0;
-        int bottom = m - 1;
-        int last = m * n;
-        int count = 1;
-        while (count <= last){
-            for (int i = left; i <= right; i++){
-                list.add(matrix[top][i]);
-                count++;
-            }
-            top++;
-            if (count > last) break;
-            for (int i = top; i <= bottom; i++){
-                list.add(matrix[i][right]);
-                count++;
-            }
-            right--;
+        int counta = 0;
+        int countb = 0;
+        int length = nums.length;
 
-            for (int i = right; i >= left; i--){
-                list.add(matrix[bottom][i]);
-                count++;
-                if (count > last) break;
-            }
-            bottom--;
-            if (count > last) break;
-
-            for (int i = bottom; i >= top; i--){
-                list.add(matrix[i][left]);
-                count++;
-                if (count > last) break;
-            }
-            left++;
+        for (int i = 0; i < length; i++){
+            if (nums[i] == 0){counta++;}
+            if (nums[i] == 1){countb++;}
         }
-        return list;
-    }    
+        for (int i = 0; i < counta; i++){nums[i] = 0;}
+        int indexx = counta + countb;
+        for (int i = counta; i < indexx; i++){
+            nums[i] = 1;
+        }
+
+        for (int i = indexx; i < length; i++){
+            nums[i] = 2;
+        }
+        return;
+    }
 }
