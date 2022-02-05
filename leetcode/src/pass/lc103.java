@@ -1,10 +1,9 @@
 package pass;
 
 import java.util.*;
-import pass.TreeNode;
 public class lc103 {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
+        Queue<TreeNode> q = new LinkedList<>();
         Queue<TreeNode> queue = new LinkedList<>();
 
         List<List<Integer>> ans = new ArrayList<>();
@@ -13,13 +12,13 @@ public class lc103 {
         }
 
         List<Integer> list = new ArrayList<>();
-        stack.add(root);
-        while (!stack.isEmpty() || !queue.isEmpty()){
-            while (!stack.isEmpty()){
-                TreeNode cur = stack.pop();
+        q.add(root);
+        while (!q.isEmpty() || !queue.isEmpty()){
+            while (!q.isEmpty()){
+                TreeNode cur = q.poll();
                 TreeNode left = cur.left;
                 TreeNode right = cur.right;
-
+            
                 if (right != null){
                     queue.add(right);
                 }
@@ -36,10 +35,10 @@ public class lc103 {
                 TreeNode right = cur.right;
 
                 if (right != null){
-                    stack.add(right);
+                    q.add(right);
                 }
                 if (left != null){
-                    stack.add(left);
+                    q.add(left);
                 }
                 list.add(cur.val);
             }
