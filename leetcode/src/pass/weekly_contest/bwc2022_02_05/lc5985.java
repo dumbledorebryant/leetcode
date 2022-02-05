@@ -26,6 +26,7 @@ public class lc5985 {
         for (int i = slen + elen; i < length; i++){
             ans[i] = large.get(i - slen - elen);
         }
+        
         return ans;
     }
 }
