@@ -14,6 +14,7 @@ public class lc5984 {
         right += chrs[1];
         right += chrs[3];
         int r = Integer.valueOf(right);
+        
         return l + r;
     }
 }
