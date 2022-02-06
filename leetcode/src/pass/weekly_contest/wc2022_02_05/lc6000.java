@@ -26,6 +26,7 @@ public class lc6000 {
             ans[i] = olist.get(right);
             right++;
         }
+        
         return ans;
     }
 }
