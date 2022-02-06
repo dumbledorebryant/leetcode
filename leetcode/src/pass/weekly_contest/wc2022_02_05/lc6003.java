@@ -17,6 +17,7 @@ public class lc6003 {
         for (int i = 1; i < N; i++) {
             res = Math.min(res, left[i - 1] + right[i]);
         }
+        
         return res;
     }
 }
