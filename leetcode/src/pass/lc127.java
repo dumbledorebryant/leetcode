@@ -32,18 +32,4 @@ public class lc127 {
         }
         return 0;
     }
-    public List<String> adj(String str, List<String> wordlList) {
-        List<String> ans = new ArrayList<>();
-        char[] chrs = str.toCharArray();
-        for (int i = 0; i < length; i++){
-            char ich = chrs[i];
-            for (char ch = 'a'; ch <= 'z'; ch++){
-                chrs[i] = ch;
-                String rep = new String(chrs);
-                if (wordlList.contains(rep)) ans.add(rep);
-            }
-            chrs[i] = ich;
-        }
-        return ans;
-    }
 }
