@@ -6,11 +6,8 @@ public class lc190 {
         int ans = 0;
         for (int i = 0; i < 32; i++){
             int bit = ((n >> i) & 1);
-            ans |= bit << (32- i);
+            ans |= bit << (31 - i);
         }
         return ans;
-    }
-    public void test(){
-        System.out.println(reverseBits(964176192));
     }
 }
