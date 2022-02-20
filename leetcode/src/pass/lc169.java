@@ -26,10 +26,4 @@ public class lc169 {
         }
         return ans;
     }
-
-    public void test(){
-        int[] nums = {3,2,3};
-        int res = majorityElement(nums);
-        System.out.println(res);
-    }
 }
