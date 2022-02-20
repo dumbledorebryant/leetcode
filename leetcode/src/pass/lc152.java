@@ -2,25 +2,17 @@ package pass;
 
 public class lc152 {
     public int maxProduct(int[] nums) {
+        int ma = nums[0];
+        int mi = nums[0];
+    
+        int ans = nums[0];
         int length = nums.length;
-        if (length == 1) return nums[0];
-        int[] dp = new int[length + 1];
-        dp[0] = 1;
-        dp[1] = nums[0];
-        for (int i = 2; i <= length; i++){
-            int num = nums[i - 1];
-            int pre = nums[i - 2];
-            int p = num * pre;
-            int a = dp[i - 2];
-            if (p > 0) dp[i] = p * Math.max(1, a);
-            else {
-                if (a > 1) dp[i] = p;
-                else dp[i] = p * a;
-            }
-        }
-        int ans = Integer.MIN_VALUE;
-        for (int i = 2; i <= length; i++){
-            ans = Math.max(nums[i - 1], Math.max(ans, dp[i]));
+        for(int i = 1; i < length; i++){
+            int num = nums[i];
+            int temp = ma;
+            ma = Math.max(num, Math.max(ma * num, mi * num));
+            mi = Math.min(num, Math.min(mi * num, temp * num));
+            ans = Math.max(ma, ans);
         }
         return ans;
     }
