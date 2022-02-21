@@ -4,55 +4,45 @@ public class lc212 {
     int m, n;
     List<String> ans = new ArrayList<String>();
     Set<String> set = new HashSet<>();
+    int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    boolean[][] visited = new boolean[15][15];
     public List<String> findWords(char[][] board, String[] words) {
         m = board.length;
         n = board[0].length;
-        int len = words.length;
-        Map<Integer, List<String>> map = new HashMap<>();
+        for (String str : words) set.add(str);
 
-        for (int i = 0; i < len; i++){
-            String word = words[i];
-            int key = word.charAt(0) - 'a';
-            List<String> list = map.getOrDefault(key, new ArrayList<>());
-            list.add(word);
-            map.put(key, list);
-        }
-        
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < m; i++){
             for (int j = 0; j < n; j++){
-                int key = board[i][j] - 'a';
-                if (map.containsKey(key)){
-                    List<String> list = map.get(key);
-                    boolean[][] visited = new boolean[m][n];
-                    StringBuilder sb = new StringBuilder();
-                    dfs(board, i, j, sb, list, visited);
-                }
+                visited[i][j] = true;
+                sb.append(board[i][j]);
+                dfs(board, i, j, sb);
+                sb.deleteCharAt(sb.length() - 1);
+                visited[i][j] = false;
             }
         }
         return ans;
     }
-    public void dfs(char[][] board, int i, int j, StringBuilder sb, List<String> list, boolean[][] visited){
+    public void dfs(char[][] board, int i, int j, StringBuilder sb){
+        if (sb.length() > 10) return;
         String str = sb.toString();
-        if (list.contains(str)){
-            if (!set.contains(str)) {
-                set.add(str);
-                ans.add(str);
-            } 
+        if (set.contains(str)){
+            set.remove(str);
+            ans.add(str);
         }
 
-        if (i < 0 || i >= m || j < 0 || j >= n) return;
+        for (int[] d : dirs){
+            int dx = i + d[0];
+            int dy = j + d[1];
+            if (dx < 0 || dx >= m || dy < 0 || dy >= n) continue;
+            if (visited[dx][dy]) continue;
 
-        if (visited[i][j]) return;
-        char ch = board[i][j];
-        sb.append(ch);
-        
-        visited[i][j] = true;
-        dfs(board, i + 1, j, sb, list, visited); 
-        dfs(board, i - 1, j, sb, list, visited);
-        dfs(board, i, j + 1, sb, list, visited);
-        dfs(board, i, j - 1, sb, list, visited);
-        visited[i][j] = false;
-        sb.deleteCharAt(sb.length() - 1);
+            visited[dx][dy] = true;
+            sb.append(board[dx][dy]);
+            dfs(board, dx, dy, sb);
+            sb.deleteCharAt(sb.length() - 1);
+            visited[dx][dy] = false;
+        }
         return;
     }
 }
