@@ -50,7 +50,6 @@ public class lc240 {
             if (num == target) return true;
             else if (num < target) row++;
             else col--;
-            
         }
         return false;
     }
