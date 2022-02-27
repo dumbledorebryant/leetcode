@@ -1,7 +1,6 @@
 package pass;
 import java.util.HashMap;
 import java.util.*;
-import pass.ListNode;
 public class lc142 {
     public ListNode detectCycle(ListNode head) {
         if (head == null) return null;

@@ -3,7 +3,6 @@ package pass;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.plaf.synth.SynthEditorPaneUI;
 
 public class lc279 {
     public int numSquares(int n) {
