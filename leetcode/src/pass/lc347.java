@@ -24,9 +24,4 @@ public class lc347 {
         }
         return array;
     }
-
-    public void test(){
-        int[] nums = {5,3,1,1,1,3,73,1};
-        topKFrequent(nums, 2);
-    }
 }
