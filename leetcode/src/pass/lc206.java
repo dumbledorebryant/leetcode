@@ -20,4 +20,13 @@ public class lc206 {
         }
         return ans.next;
     }
+
+    public ListNode reverseList2(ListNode head) {
+        if (head == null) return null;
+        ListNode last = reverseList(head.next);
+        if (last == null) return head;
+        head.next.next = head; 
+        head.next = null;
+        return last;
+    }
 }
