@@ -4,7 +4,6 @@ import pass.ListNode;
 public class lc92 {
     ListNode succ;
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode temp = head;
         if (left == 1)
             return reverseFromStart(head, right);
         head.next = reverseBetween(head.next, left - 1, right - 1);
