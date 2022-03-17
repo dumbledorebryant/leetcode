@@ -14,7 +14,7 @@ public class lc543 {
         int[] ans = new int[2];
         ans[0] = left[0] + right[0] + 2;
         max = Math.max(max, ans[0]);
-        ans[1] = Math.max(right[1], right[1]) + 1;
+        ans[1] = Math.max(left[1], right[1]) + 1;
         return ans;
     }
 }
