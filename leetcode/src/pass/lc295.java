@@ -45,7 +45,6 @@ class MedianFinder {
     }
     
     public double findMedian() {
-        
         if (l.size() > r.size()) return l.peek();
         else return (l.peek() + r.peek()) / 2.0;
     }
