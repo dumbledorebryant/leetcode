@@ -8,7 +8,7 @@ public class lc297 {
         if (root == null) return "#";
         String res = "";
         res += Integer.toString(root.val);
-        res += ",";
+        res += ","; // not "#"
         res += preorder_serialize(root.left);
         res += ",";
         res += preorder_serialize(root.right);
