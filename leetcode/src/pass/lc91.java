@@ -1,6 +1,9 @@
 package pass;
 
+import java.util.Scanner;
+
 public class lc91 {
+    
     public int numDecodings(String s) {
         int length = s.length();
         s = " " + s;
@@ -31,8 +34,7 @@ public class lc91 {
             int a = chrs[i] - '0';
             int b = a + (chrs[i - 1] - '0') * 10;
             
-            dp[i] = dp[i - 1];
-            
+            dp[i] = dp[i - 1];           
             
             if (b <= 26 && b >= 1) {
                 dp[i] += dp[i - 2];
