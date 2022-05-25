@@ -120,11 +120,11 @@ public class Solutions {
         for (int i = 1; i <= length; i++){
             int a = chrs[i] - '0';
             int b = a + (chrs[i - 1] - '0') * 10;
-            if (a != 0){
+            if (a >= 0 && a <= 9){
                 dp[i] = dp[i - 1];
             }
 
-            if (b <= 26 && b >= 1) {
+            if (b <= 26 && b >= 10) {
                 dp[i] += dp[i - 2];
             }
         }
