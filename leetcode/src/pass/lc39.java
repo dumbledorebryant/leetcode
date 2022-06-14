@@ -1,34 +1,28 @@
 package pass;
 import java.util.*;
 public class lc39 {
-    List<List<Integer>> ans = new ArrayList<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        
-        int length = candidates.length;
-        for (int i = 0; i < length; i++){
-            List<Integer> item = new ArrayList<>();
-            int sum = 0;
-            backtrace(candidates, i, item, sum, target);
-        }
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        List<Integer> combine = new ArrayList<Integer>();
+        dfs(candidates, target, ans, combine, 0);
         return ans;
     }
-    public void backtrace(int[] cand, int i, List<Integer> item, int sum, int target){
-        int length = cand.length;
-        if (i >= length) return;
-        int num = cand[i];
-        int csum = sum + num;
-        if (csum > target) return;
-        item.add(num);
-        if (csum == target){
-            ans.add(new ArrayList<>(item));
-            item.remove(item.size() - 1);
+
+    public void dfs(int[] candidates, int target, List<List<Integer>> ans, List<Integer> combine, int idx) {
+        if (idx == candidates.length) {
             return;
         }
-        else {
-            backtrace(cand, i, item, csum, target);
-            item.remove(item.size() - 1);
-            backtrace(cand, i + 1, item, csum, target);
-            item.remove(item.size() - 1);
+        if (target == 0) {
+            ans.add(new ArrayList<Integer>(combine));
+            return;
+        }
+        // 直接跳过
+        dfs(candidates, target, ans, combine, idx + 1);
+        // 选择当前数
+        if (target - candidates[idx] >= 0) {
+            combine.add(candidates[idx]);
+            dfs(candidates, target - candidates[idx], ans, combine, idx);
+            combine.remove(combine.size() - 1);
         }
     }
 }
