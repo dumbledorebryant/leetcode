@@ -7,9 +7,11 @@ public class lc274 {
         Arrays.sort(citations);
         int length = citations.length;
         int ans = 0;
-        for (int i = 0; i < length; i++){
-            int num = citations[i];
-            if (num > i + 1)
+        for (int i = length - 1; i >= 0; i--){
+            if (citations[i] > ans){
+                ans++;
+            }
         }
+        return ans;
     }
 }
