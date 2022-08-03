@@ -6,25 +6,16 @@ import java.util.List;
 public class lc264 {
     public int nthUglyNumber(int n) {
         if (n == 1) return 1;
-        if (n == 2) return 2;
-        if (n == 3) return 3;
-        List<Integer> l2 = new ArrayList<>();
-        List<Integer> l3 = new ArrayList<>();
-        List<Integer> l5 = new ArrayList<>();
-        for (int i = 1; i <= n; i++){
-            l2.add(2 * i);
-            l3.add(3 * i);
-            l5.add(5 * i);
-        }
+        int[] array = new int[n + 1];
+        array[1] = 1;
         int ptr = 2;
-        int cur = 1;
-        int a = 0;
-        int b = 0;
-        int c = 0;
+        int a = 1;
+        int b = 1;
+        int c = 1;
         while (ptr <= n){
-            int numa = l2.get(a);
-            int numb = l3.get(b);
-            int numc = l5.get(c);
+            int numa = array[a] * 2;
+            int numb = array[b] * 3;
+            int numc = array[c] * 5;
             int min = Math.min(Math.min(numa, numb), numc);
             if (min == numa){
                 a++;
@@ -35,9 +26,9 @@ public class lc264 {
             if (min == numc){
                 c++;
             }
-            cur = min;
+            array[ptr] = min;
             ptr++;
         }
-        return cur;
+        return array[n];
     }
 }
