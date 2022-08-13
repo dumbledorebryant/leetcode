@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch distinctSegments",
+            "request": "launch",
+            "mainClass": "pass.OA.Amazon.distinctSegments",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch findNumWaysToSplit",
+            "request": "launch",
+            "mainClass": "pass.OA.Amazon.findNumWaysToSplit",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch pmatching",
+            "request": "launch",
+            "mainClass": "pass.OA.Amazon.pmatching",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch k_consistence",
+            "request": "launch",
+            "mainClass": "pass.OA.Amazon.k_consistence",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch max_stock",
+            "request": "launch",
+            "mainClass": "pass.OA.Amazon.max_stock",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "App",
