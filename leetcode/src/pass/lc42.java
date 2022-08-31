@@ -15,7 +15,7 @@ public class lc42 {
             int crh = height[right];
             mlh = Math.max(mlh, clh);
             mrh = Math.max(mrh, crh);
-            if (clh < crh){
+            if (mlh < mrh){
                 ans += (mlh - clh);
                 left++;
             }
