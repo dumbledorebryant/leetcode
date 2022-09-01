@@ -4,17 +4,20 @@ import java.util.*;
 
 public class lc138 {
     public Node copyRandomList(Node head) {
-        Node ohead = head;
         Map<Node, Node> map = new HashMap<>();
-        Node dummy = new Node(0);
-        Node nhead = dummy;
-        Node ans = dummy;
-        while (head != null){
-            dummy.next = new Node(head.val);
-            dummy = dummy.next;
-            Node temp = dummy;
-            while (temp.left)
+        Node cur = head;
+        while (cur != null){
+            Node ncur = new Node(cur.val);
+            map.put(cur, ncur);
+            cur = cur.next;
         }
         
+        Node ptr = head;
+        while (ptr != null){
+            map.get(ptr).next = map.get(ptr.next);
+            map.get(ptr).random = map.get(ptr.random);
+            ptr = ptr.next;
+        }
+        return map.get(head);
     }
 }
