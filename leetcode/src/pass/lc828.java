@@ -8,16 +8,16 @@ public class lc828 {
             index.computeIfAbsent(c, x-> new ArrayList<Integer>()).add(i);
         }
 
-        long ans = 0;
+        int ans = 0;
         for (List<Integer> A: index.values()) {
             for (int i = 0; i < A.size(); i++) {
-                long cur = A.get(i);
-                long prev = i > 0 ? A.get(i - 1) : -1;
-                long next = i < A.size() - 1 ? A.get(i + 1) : s.length();
+                int cur = A.get(i);
+                int prev = i > 0 ? A.get(i - 1) : -1;
+                int next = i < A.size() - 1 ? A.get(i + 1) : s.length();
                 ans += (cur - prev) * (next - cur);
             }
         }
 
-        return (int) ans % 1_000_000_007;
+        return ans;
     }
 }
