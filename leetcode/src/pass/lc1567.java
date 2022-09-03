@@ -31,4 +31,33 @@ public class lc1567 {
         }
         return ans;    
     }
+    public int getmaxlen(int[] nums){
+        int length = nums.length;
+        int[] positive = new int[length];
+        int[] negative = new int[length];
+
+        int n0 = nums[0];
+        if (n0 > 0){
+            positive[0] = 1;
+        }
+        else if (n0 < 0){
+            negative[0] = 1;
+        }
+        for (int i = 1; i < length; i++){
+            int num = nums[i];
+            if (num > 0){
+                positive[i] = positive[i - 1] + 1;
+                negative[i] = negative[i - 1] == 0 ? 0 : negative[i - 1] + 1;
+            }
+            if (num < 0){
+                positive[i] = negative[i - 1] == 0 ? 0 : negative[i - 1] + 1;
+                negative[i] = positive[i - 1] + 1;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < length; i++){
+            ans = Math.max(ans, positive[i]);
+        }
+        return ans;
+    }
 }
