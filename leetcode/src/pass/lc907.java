@@ -35,6 +35,6 @@ public class lc907 {
             stack.push(i);
         }
 
-        return (int)ans
+        return (int)ans;
     }
 }
