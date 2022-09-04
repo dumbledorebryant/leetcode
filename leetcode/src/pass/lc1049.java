@@ -15,7 +15,7 @@ public class lc1049 {
                 dp[i] += dp[i - st];
             }
         }
-        
+        return 0;
     }
     public int sum(int[] stones){
         int ans = 0;

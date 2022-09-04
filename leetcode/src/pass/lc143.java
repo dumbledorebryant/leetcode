@@ -1,6 +1,5 @@
 package pass;
-import java.util.*;;
-import pass.ListNode;
+import java.util.*;
 
 public class lc143 {
     public void reorderList(ListNode head) {
