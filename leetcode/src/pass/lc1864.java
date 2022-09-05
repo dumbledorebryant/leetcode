@@ -2,24 +2,57 @@ package pass;
 
 public class lc1864 {
     public int minSwaps(String s) {
-        char[] cs = s.toCharArray();
-		int len = cs.length;
-		// 假设以1开头，需要交换n11个1，需要交换n10个0
-		int s1 = 1, n11 = 0, n10 = 0;
-		// 假设以0开头，需要交换n01个1，需要交换n00个0
-		int n01 = 0, n00 = 0;
-		for (int i = 0; i < len; i++) {
-			boolean one = cs[i] == '1';
-			if (s1 == 1) {
-				n11 += one ? 0 : 1;
-				n00 += one ? 1 : 0;
-			} else {
-				n10 += one ? 1 : 0;
-				n01 += one ? 0 : 1;
-			}
-			s1 ^= 1;// 相邻10互换
-		}
-		int ans = n11 == n10 ? n11 : -1;
-		return n01 == n00 ? ans == -1 ? n01 : Math.min(ans, n01) : ans;
+        // 类似前缀和
+        int count = 0;
+        for (char c : s.toCharArray()) {
+            if (c == '1') {
+                count++;
+            }
+            else {
+                count--;
+            }
+        }
+
+        // 如果01差值大于1自然无法构建，那么就是-1
+        if (Math.abs(count) > 1) {
+            return -1;
+        }
+
+        // 01一样多，那么就两种情况取小值
+        if (count == 0) {
+            int count1 = 0;
+            int count2 = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (i % 2 == 0 && s.charAt(i) == '0') {
+                    count1++;
+                }
+            }
+            for (int i = 0; i < s.length(); i++) {
+                if (i % 2 == 1 && s.charAt(i) == '0') {
+                    count2++;
+                }
+            }
+            return Math.min(count1, count2);
+        }
+
+        // 1多
+        if (count == 1) {
+            int count1 = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (i % 2 == 0 && s.charAt(i) == '0') {
+                    count1++;
+                }
+            }
+            return count1;
+        }
+
+        // 0多
+        int count1 = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (i % 2 == 0 && s.charAt(i) == '1') {
+                count1++;
+            }
+        }
+        return count1;
     }
 }
