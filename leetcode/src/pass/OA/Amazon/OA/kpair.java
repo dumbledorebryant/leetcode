@@ -1,4 +1,4 @@
-package pass.OA.Amazon;
+package pass.OA.Amazon.OA;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package pass.OA.Amazon;
+package pass.OA.Amazon.OA;
 
 class abcmaxcount {     
     public int find(String s) {         

@@ -1,4 +1,4 @@
-package pass.OA.Amazon;
+package pass.OA.Amazon.OA;
 
 public class findNumWaysToSplit {
     public int findNumWays(String s, int k){
