@@ -6,6 +6,6 @@ public class lc528 {
     }
     
     public int pickIndex() {
-        
+        return 0;
     }
 }
