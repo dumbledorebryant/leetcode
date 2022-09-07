@@ -1,7 +1,7 @@
 package pass;
 
 public class lc767 {
-    public String reorganizeString(String s) {
+    public String reorganizeString(String S) {
         //把字符串S转化为字符数组
         char[] alphabetArr = S.toCharArray();
         //记录每个字符出现的次数
