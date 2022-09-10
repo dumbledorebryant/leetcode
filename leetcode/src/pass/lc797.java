@@ -20,7 +20,8 @@ public class lc797 {
         int[] nexts = graph[i];
         for (int next : nexts){
             dfs(graph, next, path);
+            path.remove(path.size() - 1);
         }
-        path.remove(path.size() - 1);
+        
     }
 }
