@@ -1,6 +1,5 @@
 package pass;
 
-import java.beans.Visibility;
 import java.util.*;
 
 public class lc547 {

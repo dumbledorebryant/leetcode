@@ -1,5 +1,5 @@
 package pass;
-
+import java.util.*;
 public class lc529 {
     int[] dirX = {0, 1, 0, -1, 1, 1, -1, -1};
     int[] dirY = {1, 0, -1, 0, 1, -1, 1, -1};
