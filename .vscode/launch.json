@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch LRUCache",
+            "request": "launch",
+            "mainClass": "pass.LRUCache",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch distinctSegments",
             "request": "launch",
             "mainClass": "pass.OA.Amazon.distinctSegments",

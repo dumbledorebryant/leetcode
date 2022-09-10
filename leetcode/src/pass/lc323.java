@@ -1,5 +1,5 @@
 package pass;
-
+import pass.UF;
 public class lc323 {
     public int countComponents(int n, int[][] edges) {
         UF uf = new UF(n);
