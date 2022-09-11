@@ -19,4 +19,20 @@ public class lc645 {
         }
         return new int[]{dup, sum};
     }
+
+    public int[] finderror(int[] nums){
+        int length = nums.length;
+        int dup = -1;
+        int missing = -1;
+        for (int i = 0; i < length; i++){
+            int num = Math.abs(nums[i]) - 1;
+            int inum = nums[num];
+            if (inum < 0) dup = num + 1;
+            else nums[num] = -nums[num];
+        }
+        for (int i = 0; i < length; i++){
+            if (nums[i] > 0) missing = i + 1;
+        }
+        return new int[]{dup, missing};
+    }
 }
