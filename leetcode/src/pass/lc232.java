@@ -3,39 +3,31 @@ package pass;
 import java.util.Stack;
 
 public class lc232 {
-    Stack<Integer> prev = new Stack<>();
-    Stack<Integer> next = new Stack<>();
+    Stack<Integer> s1 = new Stack<>();
+    Stack<Integer> s2 = new Stack<>();
     public lc232() {
         
     }
     
     public void push(int x) {
-        prev.push(x);
+        s1.push(x);
     }
     
     public int pop() {
-        while (!prev.isEmpty()){
-            next.push(prev.pop());
-        }
-        int num = next.pop();
-        while (!next.isEmpty()){
-            prev.push(next.pop());
-        }
-        return num;
+        peek();
+        return s2.pop();
     }
     
     public int peek() {
-        while (!prev.isEmpty()){
-            next.push(prev.pop());
+        if (s2.isEmpty()){
+            while(!s1.isEmpty()){
+                s2.push(s1.pop());
+            }
         }
-        int num = next.peek();
-        while (!next.isEmpty()){
-            prev.push(next.pop());
-        }
-        return num;
+        return s2.peek();
     }
     
     public boolean empty() {
-        return prev.isEmpty();
+       return s1.isEmpty() && s2.isEmpty();
     }
 }
