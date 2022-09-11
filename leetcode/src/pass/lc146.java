@@ -6,7 +6,7 @@ public class lc146 {
     LinkedHashMap<Integer, Integer> cache = new LinkedHashMap<>();
     int cap;
     int size = 0;
-    public LRUCache(int capacity) {
+    public lc146(int capacity) {
         cap = capacity;
     }
     

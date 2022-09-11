@@ -1,6 +1,9 @@
 package pass;
 
+import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Stack;
 
@@ -21,6 +24,26 @@ public class lc496 {
         }
         for (int i = 0; i < length; i++){
             ans[i] = map.get(nums1[i]);
+        }
+        return ans;
+    }
+    public int[] next(int[] nums1, int[] nums2){
+        Deque<Integer> stack = new LinkedList<>();
+        int len = nums2.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < len; i++){
+            while (!stack.isEmpty() && nums2[stack.peek()] < nums2[i]){
+                int idx = stack.pop();
+                map.put(nums2[idx], nums2[i]);
+            }
+            stack.push(i);
+        }
+        int length = nums1.length;
+        int[] ans = new int[length];
+        Arrays.fill(nums1, -1);
+        for (int i = 0; i < length; i++){
+            if (map.containsKey(nums1[i]))
+                ans[i] = map.get(nums1[i]);
         }
         return ans;
     }
