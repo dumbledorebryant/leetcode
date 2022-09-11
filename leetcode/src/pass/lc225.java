@@ -1,46 +1,34 @@
 package pass;
 
-import java.util.PriorityQueue;
-
 import java.util.*;
 
 public class lc225 {
-    Queue<Integer> prev = new PriorityQueue<>();
-    Queue<Integer> next = new PriorityQueue<>();
+    Queue<Integer> queue = new LinkedList<>();
+    int ele;
     public lc225() {
         
     }
     
     public void push(int x) {
-        prev.add(x);
+        queue.offer(x);
+        ele = x;
     }
     
     public int pop() {
-        int num = 0;
-        while (!prev.isEmpty()){
-            num = prev.poll();
-            if (prev.isEmpty()) break;
-            else next.add(num);
+        int size = queue.size();
+        while (size > 2){
+            queue.offer(queue.poll());
         }
-        while (!next.isEmpty()){
-            prev.add(next.poll());
-        }
-        return num;
+        ele = queue.poll();
+        queue.offer(ele);
+        return queue.poll();
     }
     
     public int top() {
-        int num = 0;
-        while (!prev.isEmpty()){
-            num = prev.poll();
-            next.add(num);
-        }
-        while (!next.isEmpty()){
-            prev.add(next.poll());
-        }
-        return num;
+        return ele;
     }
     
     public boolean empty() {
-        return prev.isEmpty();
+        return queue.isEmpty();
     }
 }
