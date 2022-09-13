@@ -22,4 +22,29 @@ public class lc41 {
         nums[i] = nums[j];
         nums[j] = temp;
     }
+
+    public int findMissing(int[] nums){
+        int n = nums.length;
+        for (int i = 0; i < n; i++){
+            int num = nums[i];
+            if (num < n && num > 0){
+                if (nums[num - 1] == num) continue;
+                else {
+                    // nums[num] != num
+                    int j = i;
+                    int k = num - 1;
+                    while (nums[k] != nums[j]){
+                        swap(nums, k, j);
+                        j = nums[k];
+                        k = nums[j] - 1;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++){
+            if (nums[i] != i + 1) return i + 1;
+        }
+        return -1;
+    }
 }
