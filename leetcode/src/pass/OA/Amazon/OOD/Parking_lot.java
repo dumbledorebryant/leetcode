@@ -3,12 +3,12 @@ import java.util.*;
 public class Parking_lot {
     
 }
-public enum ParkingStatus {
+enum ParkingStatus {
     EMPTY,
     OCCUPIED;
 }
 
-public class ParkingSlot {
+class ParkingSlot {
 
     private String slotId;
     private String slotNumber;
@@ -40,7 +40,7 @@ public class ParkingSlot {
 }
 
 
-public class Floor {
+class Floor {
 
     private String floorId;
     private int floorNumber;
@@ -63,7 +63,7 @@ public class Floor {
 
 }
 
-public class Parking {
+class Parking {
     private String parkingId;
     private List<Floor> floors;
     private String parkingName;
@@ -83,18 +83,18 @@ public class Parking {
     }
 }
 
-public enum VehicleType {
+enum VehicleType {
     BIKE,
     COMPACT,
     SEDAN,
     TRUCK
 }
 
-public interface Vehicle {
+interface Vehicle {
     public VehicleType getType();
 }
 
-public class Bike implements Vehicle {
+class Bike implements Vehicle {
 
     private String bikeNumber;
 
@@ -114,7 +114,7 @@ public class Bike implements Vehicle {
 
 }
 
-public class HatchBackCar implements Vehicle {
+class HatchBackCar implements Vehicle {
 
     private String carNumber;
 
@@ -133,7 +133,7 @@ public class HatchBackCar implements Vehicle {
     }
 }
 
-public class Sedan implements Vehicle {
+class Sedan implements Vehicle {
 
     private String carNumber;
 
@@ -153,13 +153,13 @@ public class Sedan implements Vehicle {
 
 }
 
-public enum SlotSize {
+enum SlotSize {;
 
-    SMALL(asList(BIKE, COMPACT)),
-    MEDIUM(asList(BIKE, COMPACT, SEDAN)),
-    LARGE(asList(BIKE, COMPACT, SEDAN, TRUCK));
+    //SMALL(asList(BIKE, COMPACT)),
+    //MEDIUM(asList(BIKE, COMPACT, SEDAN)),
+    //LARGE(asList(BIKE, COMPACT, SEDAN, TRUCK));
 
-    private final List<VehicleType> vehicleTypesAllowed;
+    private List<VehicleType> vehicleTypesAllowed;
 
     SlotSize(List<VehicleType> vehicleTypes) {
         this.vehicleTypesAllowed = vehicleTypes;
@@ -170,7 +170,7 @@ public enum SlotSize {
     }
 }
 
-public class FareController {
+class FareController {
 
     private Map<Vehicle, ParkingDetails> vehicleParkingDetailsMap = new HashMap<>();
 
@@ -183,14 +183,14 @@ public class FareController {
         parkingDetails.exitTime = new Date();
     }
 
-    public BigDecimal getFare(Vehicle vehicle) {
-        ParkingDetails parkingDetails = vehicleParkingDetailsMap.get(vehicle);
-        return getFare(parkingDetails.parking, parkingDetails.entryTime, parkingDetails.exitTime);
-    }
+    //public BigDecimal getFare(Vehicle vehicle) {
+    //    ParkingDetails parkingDetails = vehicleParkingDetailsMap.get(vehicle);
+    //    return getFare(parkingDetails.parking, parkingDetails.entryTime, parkingDetails.exitTime);
+    //}
 
-    private BigDecimal getFare(Parking parking, Date entryTime, Date exitTime) {
-        return null;
-    }
+    //private BigDecimal getFare(Parking parking, Date entryTime, Date exitTime) {
+    //    return null;
+    //}
 
 }
 
