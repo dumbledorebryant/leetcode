@@ -2,64 +2,60 @@ package pass;
 import java.util.*;
 
 public class lc227 {
+    int index = 0;
     public int calculate(String s) {
-        List<String> list = new ArrayList<>();
-        s = s.replace(" ", "");
-        s = s.replace("+", " + ");
-        s = s.replace("-", " - ");
-        s = s.replace("*", " * ");
-        s = s.replace("/", " / ");
-        String[] tmp = s.split(" ");
-        int length = tmp.length;
-        for (int i = 0; i < length; i++){
-            String str = tmp[i];
-            switch (str){
-                case "*":
-                {
-                    int pre = Integer.parseInt(list.remove(list.size() - 1));
-                    i++;
-                    int next = Integer.parseInt(tmp[i]);
-                    String sub = String.valueOf(pre * next);
-                    list.add(sub); 
-                    break;
+        Deque<Integer> stack = new LinkedList<>();
+        
+        char[] chrs = s.toCharArray();
+        int length = s.length();
+
+        int num = 0;
+        char sign = '+';
+
+        while (index < length) {
+            char ch = chrs[index];
+            index++;
+
+            if (Character.isDigit(ch)){
+                num = num * 10 + (ch - '0');
+            }
+            if (ch == '('){
+                num = calculate(s);
+            }
+            if (ch == ')'){
+                break;
+            }
+            if ((!Character.isDigit(ch) && ch != ' ') || index == length){
+                switch (sign){
+                    case '+': {
+                        stack.push(num);
+                        break;
+                    }
+
+                    case '-': {
+                        stack.push(-num);
+                        break;
+                    }
+
+                    case '*': {
+                        stack.push(stack.pop() * num);
+                        break;
+                    }
+
+                    case '/': {
+                        stack.push(stack.pop() / num);
+                        break;
+                    }
                 }
-                case "/":
-                {
-                    int pre = Integer.parseInt(list.remove(list.size() - 1));
-                    i++;
-                    int next = Integer.parseInt(tmp[i]);
-                    String sub = String.valueOf(pre / next);
-                    list.add(sub); 
-                    break;
-                }
-                default:
-                {
-                    list.add(str);
-                    break;
-                }
+                sign = ch;
+                num = 0;
             }
         }
-        System.out.println(list);
-        //int ans = Integer.parseInt(stack.pop());
-        int ans = Integer.parseInt(list.get(0));
-        for (int i = 1; i < list.size(); i++){
-            String str = list.get(i);
-            if (str.equals("+")){
-                i++;
-                int next = Integer.parseInt(list.get(i));
-                System.out.println(next);
-                ans += next;
-            }
-            else if (str.equals("-")){
-                i++;
-                int next = Integer.parseInt(list.get(i));
-                ans -= next;
-            }
+        int sum = 0;
+        while (!stack.isEmpty()){
+            sum += stack.pop();
         }
-        return ans;
+        return sum;
     }
 
-    public int cal(String s){
-        
-    }
 }
