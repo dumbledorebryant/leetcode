@@ -10,7 +10,6 @@ public class lc772 {
     public int calc2(String s) { // exact calc2 code, except two lines of logic added to handle '(' and ')'          
         int res = 0, pre = 0, num = 0, n = s.length();
         char sign = '+';
-        
         while (idx < n) {
             char c = s.charAt(idx++);
             if (c == '(') num = calc2(s); // recursively calculate everything between '(' and ')'
