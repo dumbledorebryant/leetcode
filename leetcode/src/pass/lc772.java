@@ -27,7 +27,6 @@ public class lc772 {
                 sign = c;
             }
         }
-        
         return res + pre;
     }
 }
