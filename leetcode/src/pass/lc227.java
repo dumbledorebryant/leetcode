@@ -1,7 +1,6 @@
 package pass;
 import java.util.*;
 
-import javax.print.DocFlavor.STRING;
 public class lc227 {
     public int calculate(String s) {
         List<String> list = new ArrayList<>();
@@ -58,5 +57,9 @@ public class lc227 {
             }
         }
         return ans;
+    }
+
+    public int cal(String s){
+        
     }
 }
