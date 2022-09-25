@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BinaryGame",
+            "request": "launch",
+            "mainClass": "pass.OA.Expedia.BinaryGame",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch Cpairs",
+            "request": "launch",
+            "mainClass": "pass.OA.Expedia.Cpairs",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch Coupons",
+            "request": "launch",
+            "mainClass": "pass.OA.Expedia.Coupons",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch LRUCache",
             "request": "launch",
             "mainClass": "pass.LRUCache",
