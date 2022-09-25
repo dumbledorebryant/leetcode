@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Karat",
+            "request": "launch",
+            "mainClass": "pass.OA.Palantir.Karat",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch BinaryGame",
             "request": "launch",
             "mainClass": "pass.OA.Expedia.BinaryGame",
