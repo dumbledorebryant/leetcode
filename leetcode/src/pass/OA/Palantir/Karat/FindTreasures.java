@@ -1,9 +1,9 @@
-package pass.OA.Palantir;
+package pass.OA.Palantir.Karat;
 
 import java.util.*;
 
 
-public class Karat {
+public class FindTreasures {
     int n;
     int m;
     int[] trg;
@@ -59,7 +59,7 @@ public class Karat {
     }
 
     public static void main(String[] args) {
-        Karat kt = new Karat();
+        FindTreasures kt = new FindTreasures();
         int[][] board = new int[][]{
             { 1,  0,  0,  0,  0},
             { 0, -1, -1,  0,  0},

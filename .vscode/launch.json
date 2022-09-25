@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch FindParent",
+            "request": "launch",
+            "mainClass": "pass.OA.Palantir.Karat.FindParent",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch Karat",
             "request": "launch",
             "mainClass": "pass.OA.Palantir.Karat",
