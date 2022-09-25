@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch LCSubarray",
+            "request": "launch",
+            "mainClass": "pass.OA.Palantir.Karat.LCSubarray",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch FindParent",
             "request": "launch",
             "mainClass": "pass.OA.Palantir.Karat.FindParent",
