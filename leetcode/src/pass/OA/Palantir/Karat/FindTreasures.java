@@ -49,12 +49,14 @@ public class FindTreasures {
                 res = new ArrayList<>(path);
             }
             visited[x][y] = false;
+            path.remove(path.size() - 1);
             return;
         }
         
         for (int[] d : direction){
-            dfs(board, x + d[0], y + d[1], visited, cur_diamonds, new ArrayList<>(path));
+            dfs(board, x + d[0], y + d[1], visited, cur_diamonds, path);
         }
+        path.remove(path.size() - 1);
         visited[x][y] = false;
     }
 
