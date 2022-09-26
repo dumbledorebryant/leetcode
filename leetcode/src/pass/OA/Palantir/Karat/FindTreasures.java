@@ -40,7 +40,7 @@ public class FindTreasures {
         path.add(new int[]{x,y});
         visited[x][y] = true;
 
-        if (board[x][y] == 1){
+        if (board[x][y] == 1) {
             cur_diamonds++;
         }
         
