@@ -8,26 +8,28 @@ public class lc1905 {
         int ans = 0;
         for (int i = 0; i < m; i++){
             for (int j = 0; j < n; j++){
-                if (grid2[i][j] == 1 && grid1[i][j] == 1){
-                    if (dfs(grid1, grid2, i, j)) ans++;
+                if (grid2[i][j] == 1 && grid1[i][j] == 0)
+                    dfs(grid2, i, j);
+            }
+        }
+        for (int i = 0; i < m; i++){
+            for (int j = 0; j < n; j++){
+                if (grid2[i][j] == 1){
+                    ans++;
+                    dfs(grid2, i, j);
                 }
             }
         }
         return ans;
     }
 
-    public boolean dfs(int[][] grid1, int[][] grid2, int i, int j){
-        if (i < 0 || i >= m || j < 0 || j >= n) return true;
-        int one = grid1[i][j];
-        int two = grid2[i][j];
-
-        if (two == 0) return true;
-        if (one == 0) return false;
-        grid2[i][j] = 0;
-        grid1[i][j] = 0;
-        return dfs(grid1, grid2, i + 1, j) &
-               dfs(grid1, grid2, i - 1, j) &
-               dfs(grid1, grid2, i, j + 1) &
-               dfs(grid1, grid2, i, j - 1);
+    public void dfs(int[][] grid, int i, int j){
+        if (i < 0 || i >= m || j < 0 || j >= n) return;
+        if (grid[i][j] == 0) return;
+        grid[i][j] = 0;
+        dfs(grid, i + 1, j);
+        dfs(grid, i - 1, j);
+        dfs(grid, i, j + 1);
+        dfs(grid, i, j - 1);
     }
 }
