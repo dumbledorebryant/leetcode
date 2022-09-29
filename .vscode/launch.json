@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch GetGroups",
+            "request": "launch",
+            "mainClass": "pass.OA.Doordash.GetGroups",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch TaskCompletion",
             "request": "launch",
             "mainClass": "pass.OA.Doordash.TaskCompletion",

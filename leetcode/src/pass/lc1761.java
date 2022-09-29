@@ -7,7 +7,7 @@ import javax.print.attribute.HashAttributeSet;
 public class lc1761 {
     int ans = Integer.MAX_VALUE;
     Map<Integer, Set<Integer>> map = new HashMap<>();
-    public int minTrioDegree(int n, int[][] edges) {
+    public int minTDegree(int n, int[][] edges) {
         
         for (int[] edge : edges){
             int nodeA = edge[0];
@@ -35,5 +35,10 @@ public class lc1761 {
         for (int next : set){
             findTrio(start, next, k + 1, sum);
         }
+    }
+
+    public int minTrioDegree(int n, int[][] edges) {
+        Map<Integer, Integer> map = new HashMap<>();
+        
     }
 }
