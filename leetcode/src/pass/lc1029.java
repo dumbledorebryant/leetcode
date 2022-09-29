@@ -1,8 +1,6 @@
 package pass;
 
-import java.util.PrimitiveIterator;
 import java.util.PriorityQueue;
-import java.util.concurrent.PriorityBlockingQueue;
 
 public class lc1029 {
     public int twoCitySchedCost(int[][] costs) {
