@@ -11,8 +11,8 @@ public class ShareAncestor {
             parents.computeIfAbsent(child, k -> new ArrayList<>()).add(parent);
         }
 
-        Set<Integer> xp = new HashSet<>();
-        Set<Integer> yp = new HashSet<>();
+        Set<Integer> xp = findAncestors(parents, x);
+        Set<Integer> yp = findAncestors(parents, y);
         for (int parent : xp){
             if (yp.contains(parent)) return true;
         }
@@ -23,8 +23,12 @@ public class ShareAncestor {
         Set<Integer> set = new HashSet<>();
         if (!map.containsKey(x)) return set;
         for (int parent : map.get(x)){
+            set.add(parent);
             set.addAll(findAncestors(map, parent));
         }
         return set;
+    }
+
+    public static void main(String[] args) {
     }
 }

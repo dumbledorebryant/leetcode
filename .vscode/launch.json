@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch IntelligentSubstr",
+            "request": "launch",
+            "mainClass": "pass.OA.Doordash.IntelligentSubstr",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch ShareAncestor",
+            "request": "launch",
+            "mainClass": "pass.OA.Palantir.Karat.ShareAncestor",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch WordProcessor",
             "request": "launch",
             "mainClass": "pass.OA.Palantir.Karat.WordProcessor",
