@@ -19,6 +19,11 @@ public class GetGroups {
                 nums[i] = 1;
             }
         }
+
+        public int getCount(int node){
+            int root = find(node);
+            return nums[root];
+        }
         
         // 将节点 p 和节点 q 连通
         public void union(int p, int q) {
@@ -67,7 +72,7 @@ public class GetGroups {
                 uf.union(sa, sb);
             }
             else {
-                ans = uf.nums[sa] + uf.nums[sb];
+                ans = uf.getCount(sa) + uf.getCount(sb);
                 break;
             }
         }
@@ -76,8 +81,8 @@ public class GetGroups {
 
     public static void main(String[] args) {
         List<String> qtype = new ArrayList<>();
-        //qtype.add("Friend");
-        //qtype.add("Friend");
+        qtype.add("Friend");
+        qtype.add("Friend");
         qtype.add("Total");
         int[] s1 = {1, 2, 1};
         int[] s2 = {2, 3, 4};
@@ -86,6 +91,6 @@ public class GetGroups {
         int n = 4;
         int n2 = 2;
         GetGroups gg = new GetGroups();
-        System.out.println(gg.getTheGroups(n2, qtype, s3, s4));
+        System.out.println(gg.getTheGroups(n, qtype, s1, s2));
     }
 }
