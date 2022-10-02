@@ -2,7 +2,7 @@ package pass.OA.Doordash;
 
 import java.util.*;
 
-public class PureTest {
+public class MiniRoute {
     private static int[] dijkstra(int source, int n, Map<Integer, List<int[]>> graph) {
         int[] dist = new int[n];
         Arrays.fill(dist, Integer.MAX_VALUE);
