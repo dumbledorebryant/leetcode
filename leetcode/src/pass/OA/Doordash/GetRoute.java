@@ -11,6 +11,10 @@ public class GetRoute {
 //using namespace std;
 
 // Optimized approach: using priority queue.
+
+
+/*
+
 vector<int> dijkstra(int source, int n, unordered_map<int, vector<pair<int, int>>> & adj) {
     // O(ElogV), there'll be at most E vertices in the heap, 
     // Each insert or extract operation is O(logE) = O(logV^2) = O(logV)
@@ -73,3 +77,6 @@ int main() {
     vector<int> roads_weight = {1, 2, 3};
     cout << getShortestDistance(n, a, b, c, roads_from, roads_to, roads_weight) << endl;
 }
+
+ * 
+ */

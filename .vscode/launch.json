@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PureTest",
+            "request": "launch",
+            "mainClass": "Doordash.PureTest",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch GetGroups",
+            "request": "launch",
+            "mainClass": "Doordash.GetGroups",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch Result",
+            "request": "launch",
+            "mainClass": "pass.OA.Doordash.Result",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch MiniLenSubA",
+            "request": "launch",
+            "mainClass": "pass.OA.Doordash.MiniLenSubA",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch CountMedianArrays",
             "request": "launch",
             "mainClass": "pass.OA.Doordash.CountMedianArrays",
