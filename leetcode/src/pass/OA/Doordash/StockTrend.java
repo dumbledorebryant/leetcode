@@ -4,13 +4,14 @@ import java.util.*;
 
 public class StockTrend {
     static int[] stockTrendAnalysis(int[] price, int k) {
-        List<int[]> nums = new ArrayList<>(price.length);
-        for (int i = 0; i < price.length; i++) {
+        int length = price.length;
+        List<int[]> nums = new ArrayList<>(length);
+        for (int i = 0; i < length; i++) {
             nums.add(new int[]{price[i], i});
         }
         nums.sort((a, b) -> b[0] - a[0]);
 
-        int[] ans = new int[price.length];
+        int[] ans = new int[length];
         Arrays.fill(ans, -1);
 
         TreeSet<Integer> index = new TreeSet<>();
@@ -43,7 +44,6 @@ public class StockTrend {
         System.out.println(Arrays.toString(stockTrendAnalysis(new int[]{1,4,2,5,3}, 2)));
         System.out.println(Arrays.toString(stockTrendAnalysis(new int[]{3,4,2,6,5}, 2)));
         System.out.println(Arrays.toString(stockTrendAnalysis(new int[]{3,1,2,4,5}, 2)));
-
         System.out.println(Arrays.toString(stockTrendAnalysis(new int[]{3,2,2,4,5}, 2)));
     }
 }

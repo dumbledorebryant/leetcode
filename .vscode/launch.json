@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch StockTrend",
+            "request": "launch",
+            "mainClass": "pass.OA.Doordash.StockTrend",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch PureTest",
             "request": "launch",
             "mainClass": "Doordash.PureTest",
