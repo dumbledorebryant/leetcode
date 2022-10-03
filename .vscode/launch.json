@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch calculate",
+            "request": "launch",
+            "mainClass": "pass.OA.Doordash.calculate",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch StockTrend",
             "request": "launch",
             "mainClass": "pass.OA.Doordash.StockTrend",

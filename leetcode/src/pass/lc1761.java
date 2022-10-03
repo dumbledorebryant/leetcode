@@ -37,8 +37,7 @@ public class lc1761 {
         }
     }
 
-    public int minTrioDegree(int n, int[][] edges) {
-        Map<Integer, Integer> map = new HashMap<>();
+    public int minTrioDegrees(int n, int[][] edges) {
         
     }
 }
