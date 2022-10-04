@@ -1,12 +1,12 @@
 package pass.OA.Optiver;
 import java.util.*;
-import java.io.*;
 public class CheckTreeErrors {
     public static void main(String args[] ) throws Exception {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT */
         Scanner in = new Scanner(System.in);
         String pairs = in.nextLine();
         treeErrors(pairs);
+        in.close();
     }
     public static void treeErrors(String pairs) {
         // Invalid input format, dups and more than two children as we build the tree.
