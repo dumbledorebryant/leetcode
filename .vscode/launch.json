@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch lc1044",
+            "request": "launch",
+            "mainClass": "pass.lc1044",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch calculate",
             "request": "launch",
             "mainClass": "pass.OA.Doordash.calculate",
