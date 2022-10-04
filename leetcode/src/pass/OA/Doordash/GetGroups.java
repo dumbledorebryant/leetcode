@@ -93,4 +93,6 @@ public class GetGroups {
         GetGroups gg = new GetGroups();
         System.out.println(gg.getTheGroups(n, qtype, s1, s2));
     }
+
+    
 }
