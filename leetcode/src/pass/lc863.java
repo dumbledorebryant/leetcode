@@ -1,7 +1,7 @@
 package pass;
 import java.util.*;
 
-import pass.OA.Cisco.queenAttack;
+import pass.Company.Cisco.queenAttack;
 public class lc863 {
     Map<Integer, TreeNode> parents = new HashMap<>();
     List<Integer> ans;
