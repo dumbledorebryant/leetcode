@@ -22,6 +22,7 @@ public class MenuTree {
         }
         return ans;
     }
+    
     public int count(Node or){
         if (or == null) return 0;
         int ans = 1;
