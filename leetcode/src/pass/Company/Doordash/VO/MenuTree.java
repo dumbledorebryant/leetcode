@@ -8,30 +8,81 @@ public class MenuTree {
         int value;
         List<Node> children;
     }
-    public int findChangedNodes(Node or, Node nr){
-        int ans = 0;
-        if (or == null) {
-            ans += count(nr);
-        }
-        if (nr == null) {
-            ans += count(or);
-        }
-        if (or != nr){
-            ans += count(or);
-            ans += count(nr);
-        }
-        return ans;
-    }
-    
-    public int count(Node or){
-        if (or == null) return 0;
-        int ans = 1;
-        List<Node> children = or.children;
-        if (children.size() != 0){
-            for (Node child : children){
-                ans += count(child);
+    HashMap<String, Node> map;
+    StringBuilder updates;
+    public String changedNodes(Node root1, Node root2)
+    {
+        map = new HashMap<>();
+        updates = new StringBuilder();
+        dfsToStoreFirstTreeInMap(root1);
+        compareTrees(root2);
+        if(map.size()>0)
+        {
+            //missing nodes in new tree
+            for(String key : map.keySet())
+            {
+                updates.append("\n");
+                updates.append("Missing nodes from old tree: ");
+                updates.append(key);
             }
         }
-        return ans;
+        return updates.toString();
+    }
+
+    private void dfsToStoreFirstTreeInMap(Node root)
+    {
+        map.put(root.key, root);
+        if(root.children == null)
+        {
+            return; 
+        }
+        for(Node child : root.children)
+        {
+            dfsToStoreFirstTreeInMap(child);
+        }
+    }
+
+    private void compareTrees(Node root)
+    {
+        if(map.containsKey(root.key))
+        {
+            Node original = map.get(root.key);
+            //check if the value is same to the original node
+            if(original.val != root.val)
+            {
+                updates.append("\n");
+                updates.append("Value changed for node: ");
+                updates.append(root.key);
+            }
+            map.remove(root.key);
+        }
+        else //extra nodes in new tree
+        {
+            updates.append("\n");
+            updates.append("Extra nodes in the new tree: ");
+            recursivelyAddAllChildrenToUpdates(root);
+            return;
+        }
+        if(root.children == null)
+        {
+            return; 
+        }
+        for(Node child : root.children)
+        {
+            compareTrees(child);
+        }
+    }
+
+    private void recursivelyAddAllChildrenToUpdates(Node root)
+    {
+        updates.append(root.key);
+        if(root.children == null)
+        {
+            return; 
+        }
+        for(Node child : root.children)
+        {
+            recursivelyAddAllChildrenToUpdates(child);
+        }
     }
 }
