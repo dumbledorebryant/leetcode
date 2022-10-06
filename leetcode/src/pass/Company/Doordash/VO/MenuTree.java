@@ -48,7 +48,7 @@ public class MenuTree {
         {
             Node original = map.get(root.key);
             //check if the value is same to the original node
-            if(original.val != root.val)
+            if(original.value != root.value)
             {
                 updates.append("\n");
                 updates.append("Value changed for node: ");
