@@ -63,4 +63,57 @@ public class lc4 {
         }
         return 0.0;
     }
+
+    public double findMedianArray(int[] nums1, int[] nums2){
+        if (nums1.length > nums2.length) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+        int m = nums1.length;
+        int n = nums2.length;
+        int l = 0;
+        int r = m;
+        int median1 = 0, median2 = 0;
+        while (l <= r){
+            int i = l + (r - l)/2;
+            int j = (m + n + 1)/2 - i;
+            int al = i == 0 ? Integer.MIN_VALUE : nums1[i - 1];
+            int ar = i == m ? Integer.MAX_VALUE : nums1[i];
+            int bl = i == 0 ? Integer.MIN_VALUE : nums2[j - 1];
+            int br = j == n ? Integer.MAX_VALUE : nums2[j];
+
+            if (al <= br){
+                median1 = Math.max(al, bl);
+                median2 = Math.min(ar, br);
+                l = i + 1;
+            }
+            else {
+                r = i - 1;
+            }
+        }
+        return (m + n) % 2 == 1 ? median1 * 1.0 : (median1 + median2)/2.0;
+    }
+
+    public int getKthEle(int[] nums1, int[] nums2, int k){
+        int m = nums1.length;
+        int n = nums2.length;
+        int ia = 0;
+        int ib = 0;
+        while (true){
+            if (ia >= m) return nums2[ib + k - 1];
+            if (ib >= n) return nums1[ia + k - 1];
+            if (k == 1) return Math.min(nums1[ia], nums2[ib]);
+            int nia = Math.min(ia + k/2, m) - 1;
+            int nib = Math.min(ib + k/2, n) - 1;
+            int a = nums1[nia];
+            int b = nums2[nib];
+            if (a <= b){
+                k -= (nia - ia + 1);
+                ia = nia + 1;
+            }
+            else {
+                k -= (nib - ib + 1);
+                ib = nib + 1;
+            }
+        }
+    }
 }
