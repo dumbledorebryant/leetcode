@@ -30,5 +30,6 @@ public class lc138 {
             ptr = ptr.next;
         }
         return map.get(head);
+        
     }
 }
