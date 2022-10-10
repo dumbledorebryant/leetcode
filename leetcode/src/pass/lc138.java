@@ -3,6 +3,17 @@ package pass;
 import java.util.*;
 
 public class lc138 {
+    class Node {
+        int val;
+        Node next;
+        Node random;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+            this.random = null;
+        }
+    }
     public Node copyRandomList(Node head) {
         Map<Node, Node> map = new HashMap<>();
         Node cur = head;
