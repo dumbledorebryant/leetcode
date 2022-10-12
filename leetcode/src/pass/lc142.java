@@ -17,4 +17,23 @@ public class lc142 {
         }
         return null;
     }
+    public ListNode dCycle(ListNode head) {
+        ListNode a = head;
+        ListNode b = head;
+        while (b != null && b.next != null){
+            a = a.next;
+            b = b.next.next;
+            if (a == b) {
+                break;
+            }
+        }
+        if (b == null || b.next == null) return null;
+        a = head;
+        while (a != b){
+            a = a.next;
+            b = b.next;
+        }
+        
+        return a;
+    }
 }

@@ -1,8 +1,5 @@
 package pass;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class lc416 {
     public boolean canPartition(int[] nums) {
         int sum = 0;
