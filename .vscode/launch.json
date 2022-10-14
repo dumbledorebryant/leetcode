@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch lc792",
+            "request": "launch",
+            "mainClass": "pass.lc792",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch lc410",
             "request": "launch",
             "mainClass": "pass.lc410",
