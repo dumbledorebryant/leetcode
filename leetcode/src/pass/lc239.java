@@ -27,4 +27,26 @@ public class lc239 {
         }
         return dp;
     }
+    public int[] maxWindow(int[] nums, int k){
+        int length = nums.length;
+        int[] ans = new int[length - k + 1];
+        Deque<Integer> deque = new ArrayDeque<>();
+        for (int i = 0; i < k - 1; i++){
+            int num = nums[i];
+            while (!deque.isEmpty() && nums[deque.getLast()] < num){
+                deque.removeLast();
+            }
+            deque.addLast(i);
+        }
+        for (int i = k - 1; i < length; i++){
+            int num = nums[i];
+            while (!deque.isEmpty() && nums[deque.getLast()] < num){
+                deque.removeLast();
+            }
+            deque.addLast(i);
+            while (i - deque.getFirst() >= k) deque.removeFirst();
+            ans[i - k + 1] = nums[deque.getFirst()];
+        }
+        return ans;
+    }
 }
