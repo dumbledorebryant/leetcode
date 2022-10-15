@@ -38,6 +38,27 @@ public class lc1761 {
     }
 
     public int minTrioDegrees(int n, int[][] edges) {
-        
+        int[][] matrix = new int[n][n];
+        int[] degree = new int[n];
+        for (int[] edge : edges){
+            int a = edge[0] - 1;
+            int b = edge[1] - 1;
+            matrix[a][b] = 1;
+            matrix[b][a] = 1;
+            degree[a]++;
+            degree[b]++;
+        }
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++){
+            for (int j = i + 1; j < n; j++){
+                if (matrix[i][j] != 1) continue;
+                for (int k = j + 1; k < n; k++){
+                    if (matrix[i][k] != 1 || matrix[j][k] != 1) continue;
+                    int d = degree[i] + degree[j] + degree[k] - 6;
+                    ans = Math.min(ans, d);
+                }
+            }
+        }
+        return ans == Integer.MAX_VALUE ? -1 : ans;
     }
 }
