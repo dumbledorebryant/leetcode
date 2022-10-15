@@ -6,26 +6,32 @@ public class lc735 {
     public int[] asteroidCollision(int[] asteroids) {
         Deque<Integer> deque = new LinkedList<>();
         for (int ast : asteroids){
-            if (deque.isEmpty()) deque.add(ast);
-            else {
-                while (!deque.isEmpty()){
-                    int pre = deque.peek();
-                    if ((pre ^ ast) < 0){
-                        if (Math.abs(pre) < Math.abs(ast)) deque.pop();
-                        if (Math.abs(pre) == Math.abs(ast)) {
-                            deque.pop();
-                            break;
-                        }
-                        else break;
-                    }
-                    deque.add(ast);
+            if (deque.isEmpty()) {
+                deque.add(ast);
+                continue;
+            }
+            while (!deque.isEmpty() && deque.getLast() > 0 && ast < 0){
+                int l = Math.abs(deque.getLast());
+                int r = Math.abs(ast);
+                if (l == r){
+                    deque.removeLast();
+                    ast = 0;
+                    break;
+                } 
+                if (l > r){
+                    ast = 0;
+                    break;
+                }
+                if (l < r){
+                    deque.removeLast();
                 }
             }
+            if (ast != 0) deque.add(ast);
         }
         int size = deque.size();
         int[] ans = new int[size];
         for (int i = 0; i < size; i++){
-            ans[i] = deque.poll();
+            ans[i] = deque.removeFirst();
         }
         return ans;
     }
