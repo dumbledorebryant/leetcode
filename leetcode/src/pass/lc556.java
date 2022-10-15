@@ -2,31 +2,46 @@ package pass;
 
 public class lc556 {
     public int nextGreaterElement(int n) {
-        StringBuilder sb = new StringBuilder(n);
-        int length = sb.length();
-        int i = length - 1;
-        for (; i >= 1; i--){
-            if (sb.charAt(i) < sb.charAt(i - 1)) break;
-        }      
-        if (i == 0) return -1;
+        char[] chrs = String.valueOf(n).toCharArray();
+        int length = chrs.length;
+        
+        int i = length - 2;
+        while (i >= 0 && chrs[i] >= chrs[i + 1]){
+            i--;
+        }
+        if (i == -1) return -1;
+
         int j = length - 1;
-        while (j >= 0 && sb.charAt(i) >= sb.charAt(j)){
+        while (j > i && chrs[j] <= chrs[i]){
             j--;
         }
-        swap(sb, i, j);
-        int left = i + 1;
-        int right = length - 1;
-        while (left < right){
-            swap(sb, left, right);
-            left++;
-            right--;
-        }
-        String str = sb.toString();
-        return str.compareTo(String.valueOf(Integer.MAX_VALUE)) < 0 ? Integer.valueOf(str) : -1;
+        swap(chrs, i, j);
+        reverse(chrs, i + 1);
+        StringBuilder sb = new StringBuilder();
+        sb.append(chrs);
+        String res = sb.toString();
+        long ans = Long.parseLong(res);
+        if (ans > Integer.MAX_VALUE) return -1;
+        else return Integer.valueOf(res);
     }
-    public void swap(StringBuilder sb, int i, int j){
-        char ch = sb.charAt(i);
-        sb.setCharAt(i, sb.charAt(j));
-        sb.setCharAt(j, ch);
+
+    public void swap(char[] chrs, int i, int j){
+        char temp = chrs[i];
+        chrs[i] = chrs[j];
+        chrs[j] = temp;
+    }
+    public void reverse(char[] chrs, int i){
+        int length = chrs.length;
+        int l = i;
+        int r = length - 1;
+        while (l < r){
+            swap(chrs, l, r);
+            l++;
+            r--;
+        }
+    }
+    public static void main(String[] args) {
+        lc556 lc = new lc556();
+        System.out.println(lc.nextGreaterElement(21));
     }
 }
