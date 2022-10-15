@@ -38,4 +38,40 @@ public class lc103 {
         }
         return ans;
     }
+    public List<List<Integer>> zigzagLevelTraverse(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if (root == null) return ans;
+        Deque<TreeNode> deque = new ArrayDeque<>();
+        deque.add(root);
+        int flag = 1;
+        
+        while (!deque.isEmpty()){
+            List<Integer> temp = new ArrayList<>();
+            int size = deque.size();
+            if (flag == 1){
+                for (int i = 0; i < size; i++){
+                    TreeNode node = deque.removeFirst();
+                    temp.add(node.val);
+                    TreeNode left = node.left;
+                    TreeNode right = node.right;
+                    if (left != null) deque.addLast(left);
+                    if (right != null) deque.addLast(right);
+                }
+            }
+                
+            else {
+                for (int i = 0; i < size; i++){
+                    TreeNode node = deque.removeLast();
+                    temp.add(node.val);
+                    TreeNode left = node.left;
+                    TreeNode right = node.right;
+                    if (right != null) deque.addFirst(right);
+                    if (left != null) deque.addFirst(left);
+                }
+            }
+            ans.add(temp);
+            flag = 1 - flag;
+        }
+        return ans;
+    }
 }
