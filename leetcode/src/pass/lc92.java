@@ -1,6 +1,4 @@
 package pass;
-import java.util.*;
-import pass.ListNode;
 public class lc92 {
     ListNode succ;
     public ListNode reverseBetween(ListNode head, int left, int right) {
