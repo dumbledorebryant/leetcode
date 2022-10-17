@@ -1,51 +1,52 @@
 package pass;
 import java.util.*;
+
 public class lc438 {
     public List<Integer> findAnagrams(String s, String p) {
-        int length = p.length();
-        int len = s.length();
         List<Integer> ans = new ArrayList<>();
-        if (len < length) return ans;
+        char[] cp = p.toCharArray();
+        char[] cs = s.toCharArray();
+        int length = cs.length;
+
         Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < length; i++){
-            char ch = p.charAt(i);
+        for (char ch : cp){
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
-        
-        Map<Character, Integer> window = new HashMap<>();
-        for (int i = 0; i < length; i++){
-            char ch = s.charAt(i);
-            window.put(ch, window.getOrDefault(ch, 0) + 1);
-        }
 
-        int flag = 1;
-        for (Character ch : window.keySet()){
-            if (window.get(ch) != map.get(ch)){
-                flag = 0;
+        int l = 0;
+        int r = 0;
+        Map<Character, Integer> cur = new HashMap<>(); 
+        while (r < length){
+            char ch = cs[r];
+            r++;
+            if (!map.containsKey(ch)){
+                l = r;
+                cur.clear();
+                continue;
             }
-        }
-        if (flag == 1) ans.add(0);
 
-        
-        for (int i = length; i < len; i++){
-            char och = s.charAt(i - length);
-            char nch = s.charAt(i);
-            if (window.get(och) == 1){
-                window.remove(och);
-            }
-            else {
-                window.put(och, window.get(och) - 1);
-            }
-            window.put(nch, window.getOrDefault(nch, 0) + 1);
-            int temp = 1;
-            for (Character ch : window.keySet()){
-                if (window.get(ch) != map.get(ch)){
-                    temp = 0;
-                    break;
+            cur.put(ch, cur.getOrDefault(ch, 0) + 1);
+            if (cur.get(ch) > map.get(ch)){
+                while (l < r && cs[l] != ch) {
+                    cur.put(cs[l], cur.get(cs[l]) - 1);
+                    l++;
                 }
+                cur.put(cs[l], cur.get(cs[l]) - 1);
+                l++;
             }
-            if (temp == 1) ans.add(i - length + 1);
+            if (cur.equals(map)){
+                ans.add(l);
+                char left = cs[l];
+                cur.put(left, cur.get(left) - 1);
+                l++;
+            }
         }
         return ans;
+    }
+    public static void main(String[] args) {
+        String s = "abaacbabc";
+        String p = "abc";
+        lc438 lc = new lc438();
+        System.out.println(lc.findAnagrams(s, p));
     }
 }

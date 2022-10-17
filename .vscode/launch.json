@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch lc438",
+            "request": "launch",
+            "mainClass": "pass.lc438",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch lc556",
             "request": "launch",
             "mainClass": "pass.lc556",
