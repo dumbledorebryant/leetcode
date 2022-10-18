@@ -22,10 +22,12 @@ public class minIncrement {
             int remain = freq[i] - 1;
             freq[i + 1] += remain;
         }
+        
         int sum = 0;
         for (int i : freq){
             sum += i;
         }
+
         return sum;
     }
 }
