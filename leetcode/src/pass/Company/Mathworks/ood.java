@@ -12,6 +12,7 @@ public class ood {
         int number;
         String movie;
         int available;
+        String timeSlot;
     }
 
     class Customer{
