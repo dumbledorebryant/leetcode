@@ -48,9 +48,9 @@ class test {
                 max[i]=Math.max(union.getCount(x),max[i]);
             }
         }
+        
         for (int i = 0; i < t; i++){
             System.out.println(max[i]);
         }
-        
     }
 }
