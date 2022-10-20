@@ -3,50 +3,51 @@ package pass;
 import java.util.*;
 
 public class lc698 {
+    int[] bucket;
     int target;
+    int k;
+    int[] memo;
     public boolean canPartitionKSubsets(int[] nums, int k) {
-        if(k > nums.length){
-            return false;
-        }
-        int sum = 0;
-        for(int i = 0; i < nums.length; i++){
-            sum += nums[i];
-        }
-        if(sum % k != 0){
-            return false;
-        }
+        this.k = k;
+        bucket = new int[k];
+        
+        int length = nums.length;
+        memo = new int[length];
 
-        // 降序排列
         Arrays.sort(nums);
-        int i = 0, j = nums.length - 1;
-        while(i < j){
+        int i = 0, j = length - 1;
+        while (i < j){
             int temp = nums[i];
             nums[i] = nums[j];
             nums[j] = temp;
             i++;
             j--;
         }
-        if(nums[0] > sum/k){
-            return false;
+
+        int sum = 0;
+        for (int num : nums){
+            sum += num;
         }
+        if (sum % k != 0) return false;
         target = sum / k;
-        boolean[] visited = new boolean[nums.length];
-        return backtrace(nums, k, 0, visited);
+        return dfs(nums, 0);
     }
-    public boolean backtrace(int[] nums, int k, int pre, boolean[] visited){
-        if (k == 0) return true;
-        if (pre == target) return backtrace(nums, k - 1, 0, visited);
+
+    public boolean dfs(int[] nums, int idx){
         int length = nums.length;
-        for (int i = 0; i < length; i++){
-            int num = nums[i];
-            if (visited[i]) continue;
-                
-            int cur = pre + num;
-            if (cur > target) continue;
+        if (idx == length){
+            return true;
+        }
+        int num = nums[idx];
+        for (int i = 0; i < k; i++){
+            if (i > 0 && bucket[i] == bucket[i - 1]) continue;
+            if (num + bucket[i] > target) continue;
             
-            visited[i] = true;
-            if (backtrace(nums, k, cur, visited)) return true;
-            else visited[i] = false;
+            bucket[i] += num;
+            if (dfs(nums, idx + 1)) {
+                return true;
+            }
+            bucket[i] -= num;
         }
         return false;
     }

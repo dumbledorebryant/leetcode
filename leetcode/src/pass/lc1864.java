@@ -12,7 +12,6 @@ public class lc1864 {
                 count--;
             }
         }
-
         // 如果01差值大于1自然无法构建，那么就是-1
         if (Math.abs(count) > 1) {
             return -1;
@@ -55,4 +54,5 @@ public class lc1864 {
         }
         return count1;
     }
+
 }
