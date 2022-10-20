@@ -23,4 +23,23 @@ public class lc49 {
         }
         return ans;
     }
+
+    public List<List<String>> groupAnagram(String[] strs) {
+        List<List<String>> ans = new ArrayList<>();
+        
+        Map<String, List<String>> map = new HashMap<>();
+        
+        for (String str : strs){
+            char[] chrs = str.toCharArray();
+            Arrays.sort(chrs);
+            String nstr = new String(chrs);
+            map.computeIfAbsent(nstr, k -> new ArrayList<>()).add(str);
+        }
+        
+        for (String key : map.keySet()){
+            ans.add(map.get(key));
+        }
+        
+        return ans;
+    }
 }
