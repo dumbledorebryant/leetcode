@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Linux_find {
     class File {
-        String get_name(){return "";}
+        String name;
         int size;
         int type;
         boolean isDirectory;
-        File[] children;
+        List<File> children;
     }
 
     abstract class Filter{
