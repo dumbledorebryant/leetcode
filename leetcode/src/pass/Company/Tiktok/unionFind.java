@@ -1,5 +1,4 @@
 package pass.Company.Tiktok;
-import java.io.*;
 import java.util.Scanner;
 public class unionFind {
     
