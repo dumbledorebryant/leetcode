@@ -29,4 +29,19 @@ public class lc206 {
         head.next = null;
         return last;
     }
+
+    public ListNode reverseIterative(ListNode head){
+        if (head == null) return null;
+        ListNode curh = head;
+        ListNode ptr = head.next;
+        ListNode next = head;
+        curh.next = null;
+        while (ptr != null){
+            next = ptr.next;
+            ptr.next = curh;
+            curh = ptr;
+            ptr = next;
+        }
+        return curh;
+    }
 }
