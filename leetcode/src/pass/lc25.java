@@ -1,16 +1,44 @@
 package pass;
 
+import java.util.*;
+
 public class lc25 {
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode newHead = head;
-        ListNode oldhead = head;
-        ListNode succ;
-        for (int i = 1; i < k; i++){
-            newHead = newHead.next;
+        if (head == null) return null;
+        ListNode a = head;
+        ListNode b = head;
+        for (int i = 0; i < k; i++){
+            if (b == null) return head;
+            b = b.next;
         }
-        succ = newHead.next;
+        ListNode nh = reverse(a, b);
+        a.next = reverseKGroup(b, k);
+        return nh;
     }
-    public ListNode reverseK(ListNode head, int k){
-        
+    
+    public ListNode reverse(ListNode a, ListNode b){
+        ListNode nh = null;
+        ListNode cur = a;
+        ListNode next = a;
+        while (cur != b){
+            next = cur.next;
+            cur.next = nh;
+            nh = cur;
+            cur = next;
+        }
+        return nh;
     }
+
+    public ListNode rvs(ListNode a){
+        ListNode newhead = null;
+        ListNode cur = a;
+        ListNode next = a;
+        while (cur != null){
+            next = cur.next;
+            cur.next = newhead;
+            newhead = cur;
+            cur = next;
+        }
+        return newhead;
+    }    
 }
