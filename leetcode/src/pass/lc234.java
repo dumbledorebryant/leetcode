@@ -22,4 +22,18 @@ public class lc234 {
         }
         return true;
     }
+    ListNode pre;
+    public boolean isPalindrome2(ListNode head) {
+        pre = head;
+        return checkP(head);
+    }
+    public boolean checkP(ListNode head){
+        if (head == null) return true;
+        boolean flag = checkP(head.next);
+        if (pre.val == head.val) {
+            pre = pre.next;
+            return flag;
+        }
+        else return false;
+    }
 }
