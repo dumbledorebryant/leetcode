@@ -1,5 +1,5 @@
 package pass;
-
+import java.util.*;
 public class lc315 {
     private class Pair{
         int val, id;
