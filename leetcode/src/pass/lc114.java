@@ -1,5 +1,4 @@
 package pass;
-import pass.TreeNode;
 public class lc114 {
     public void flatten(TreeNode root) {
         if (root == null) return;
@@ -7,7 +6,6 @@ public class lc114 {
         flatten(root.right);
 
         TreeNode left = root.left;
-        TreeNode right = root.right;
         TreeNode tail = left;
         if (tail == null){
             return;

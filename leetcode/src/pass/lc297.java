@@ -1,7 +1,6 @@
 package pass;
 import java.util.*;
 
-import pass.TreeNode;
 public class lc297 {
     // Encodes a tree to a single string.
     public String preorder_serialize(TreeNode root) {
