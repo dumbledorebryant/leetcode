@@ -4,7 +4,7 @@ public class lc124 {
     int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
         if (root == null) return 0;
-        int[] ans = maxsum(root);
+        maxsum(root);
         return max;
     }
 
@@ -24,5 +24,24 @@ public class lc124 {
         max = Math.max(max, ans[0]);
         max = Math.max(max, ans[1]);
         return ans;
+    }
+}
+class Solution {
+    int max = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        maxSum(root);
+        return max;
+    }
+    public int maxSum(TreeNode root){
+        if (root == null) return 0;
+        int num = root.val;
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        int l = maxSum(left);
+        int r = maxSum(right);
+        l = Math.max(l, 0);
+        r = Math.max(r, 0);
+        max = Math.max(max, l + r + num);
+        return Math.max(l, r) + num;
     }
 }
