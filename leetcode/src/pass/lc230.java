@@ -1,7 +1,5 @@
 package pass;
 
-import java.util.*;
-
 public class lc230 {
     int num;
     int value;
