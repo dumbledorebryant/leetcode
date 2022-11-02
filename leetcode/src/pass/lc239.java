@@ -49,4 +49,39 @@ public class lc239 {
         }
         return ans;
     }
+
+    class MonotonicQueue{
+        Deque<Integer> maxq = new LinkedList<>();
+        public void push(int n){
+            while (!maxq.isEmpty() && maxq.getLast() < n){
+                maxq.removeLast();
+            }
+            maxq.addLast(n);
+        }
+        public int max(){
+            return maxq.getFirst();
+        }
+        public void pop(int n){
+            if (n == maxq.getFirst()){
+                maxq.removeFirst();
+            }
+        }
+    }
+
+    MonotonicQueue mq = new MonotonicQueue();
+    int[] maxSWin(int[] nums, int k){
+        int length = nums.length;
+        int[] ans = new int[length - k + 1];
+        for (int i = 0; i < length; i++){
+            mq.push(nums[i]);
+            if (i >= k - 1){
+                ans[i - k + 1] = mq.max();
+                mq.pop(nums[i - k + 1]);
+            }
+        }
+        return ans;
+    }
 }
+
+
+
