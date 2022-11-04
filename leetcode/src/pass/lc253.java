@@ -2,8 +2,6 @@ package pass;
 
 import java.util.*;
 
-import pass.Company.Cisco.maxDiff;
-
 public class lc253 {
     public int minMeetingRooms(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
