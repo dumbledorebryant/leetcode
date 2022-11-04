@@ -24,4 +24,18 @@ public class lc45 {
         }
         return dp[index];
     }
+    public int jump2(int[] nums) {
+        int ans = 0;
+        int n = nums.length;
+        int farthest = 0;
+        int end = 0;
+        for (int i = 0; i < n - 1; i++){
+            farthest = Math.max(farthest, i + nums[i]);
+            if (end == i){
+                end = farthest;
+                ans++;
+            }
+        }
+        return ans;
+    }
 }
