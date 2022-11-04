@@ -3,7 +3,7 @@ package pass;
 public class lc188 {
     public int maxProfit(int k, int[] prices) {
         int n = prices.length;
-        int[][][] dp = new int[n + 1][3][2];
+        int[][][] dp = new int[n + 1][k + 1][2];
         for (int i = 0; i <= k; i++){
             dp[0][i][1] = -100001;
         }

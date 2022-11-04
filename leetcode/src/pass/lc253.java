@@ -2,6 +2,8 @@ package pass;
 
 import java.util.*;
 
+import pass.Company.Cisco.maxDiff;
+
 public class lc253 {
     public int minMeetingRooms(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
@@ -17,5 +19,33 @@ public class lc253 {
             queue.add(meeting[1]);
         }
         return queue.size();
+    }
+
+    public int minRooms(int[][] intervals){
+        int n = intervals.length;
+        int[] starts = new int[n];
+        int[] ends = new int[n];
+        for (int i = 0; i < n; i++){
+            starts[i] = intervals[i][0];
+            ends[i] = intervals[i][1];
+        }
+        Arrays.sort(starts);
+        Arrays.sort(ends);
+        int i = 0; 
+        int j = 0;
+        int ans = 0;
+        int count = 0;
+        while (i < n && j < n){
+            if (starts[i] < ends[j]){
+                count++;
+                i++;
+                ans = Math.max(ans, count);
+            }
+            else {
+                count--;
+                j++;
+            }
+        }
+        return ans;
     }
 }
