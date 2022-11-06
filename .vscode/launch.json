@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch lc394",
+            "request": "launch",
+            "mainClass": "pass.lc394",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch TreeBuilder",
             "request": "launch",
             "mainClass": "pass.TreeBuilder",
