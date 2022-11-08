@@ -1,18 +1,9 @@
 package pass;
 
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class lc496 {
     public int[] nextGreaterElement(int[] nums1, int[] nums2){
-        Arrays.sort(nums1, (a, b)->{
-            if (a[0] == b[0]) return b[1] - a[1];
-            return a[0] - b[0];
-        });
         Deque<Integer> stack = new LinkedList<>();
         int len = nums2.length;
         Map<Integer, Integer> map = new HashMap<>();
