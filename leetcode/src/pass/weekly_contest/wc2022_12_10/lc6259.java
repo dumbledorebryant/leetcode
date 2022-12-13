@@ -16,23 +16,10 @@ public class lc6259 {
     }
     
     public int allocate(int size, int mID) {
-        if (ptr >= cap) return -1;
-        if (cap - cur < size) return -1;
-        cur += size;
-        for (int i = ptr; i < cap; i++){
-            
-        }
+        return 0;
     }
     
     public int free(int mID) {
-        if (!mem.containsKey(mID)) return 0;
-        ptr = Math.min(ptr, mem.get(mID).get(0));
-        List<Integer> list = mem.get(mID);
-        int res = list.size();
-        for (int i = 0; i < res; i++){
-            used[list.get(i)] = false;
-        }
-        mem.remove(mID);
-        return res;
+        return 0;
     }
 }
