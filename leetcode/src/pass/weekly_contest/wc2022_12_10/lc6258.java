@@ -1,6 +1,5 @@
 package pass.weekly_contest.wc2022_12_10;
 
-import java.util.ArrayList;
 import java.util.*;
 
 public class lc6258 {
