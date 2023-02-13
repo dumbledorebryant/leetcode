@@ -26,7 +26,7 @@ public class lc154 {
             while (nums[j] == mid){
                 j--;
             }
-            return binarySearch(nums, i, j)
+            return binarySearch(nums, i, j);
         }
     }
 }
