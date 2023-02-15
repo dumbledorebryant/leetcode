@@ -1,3 +1,4 @@
-public class longestSubarray {
+import java.util.*;;
+public class LongestSubarray {
     
 }
