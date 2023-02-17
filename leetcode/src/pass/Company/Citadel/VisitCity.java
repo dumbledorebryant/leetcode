@@ -21,6 +21,5 @@ public class VisitCity {
         }
 
         System.out.println(Arrays.toString(result));
-
     }
 }

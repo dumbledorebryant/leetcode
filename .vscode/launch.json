@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch LongestSubarray",
+            "request": "launch",
+            "mainClass": "LongestSubarray",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch lc394",
             "request": "launch",
             "mainClass": "pass.lc394",
