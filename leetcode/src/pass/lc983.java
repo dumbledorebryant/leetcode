@@ -2,29 +2,29 @@ package pass;
 
 public class lc983 {
     public int mincostTickets(int[] days, int[] costs) {
-        int[] dp = new int[366];
-        dp[0] = 0;
-        int one = costs[0];
-        int seven = costs[1];
-        int thirty = costs[2];
         int length = days.length;
+        if (days == null || length == 0 || costs == null || costs.length == 0){
+            return 0;
+        }
 
-        int sum = 0;
-        for (int i = 0; i < length; i++){
-            int j = days[i];
-            if (j >= 1){
-                dp[j] = dp[j - 1] + one;
-            }
-           
-            if (j >= 7){
-                dp[j] = Math.min(dp[j], dp[j - 7] + seven);
-            }
-            
+        int[] dp = new int[days[length - 1] + 1];
+        dp[0] = 0;
 
-            if (j >= 30){
-                dp[j] = Math.min(dp[j], dp[j - 30] + thirty);
+        for (int day : days){
+            dp[day] = Integer.MAX_VALUE;
+        }
+
+        for (int i = 1; i < dp.length; i++){
+            if (dp[i] == 0){
+                dp[i] = dp[i - 1];
+                continue;
             }
-            
+
+            int c1 = dp[i - 1] + costs[0];
+            int c2 = i > 7 ? dp[i - 7] + costs[1] : costs[1];
+            int c3 = i > 30 ? dp[i - 30] + costs[2] : costs[2];
+
+            dp[i] = Math.min(c1, Math.min(c2, c3));
         }
         return dp[days[length - 1]];
     }
