@@ -21,17 +21,21 @@ public class lc109 {
         }
 
         TreeNode thead = new TreeNode(slow.val);
-        ListNode temp = head;
-        TreeNode left = new TreeNode(temp.val);
-        
-        while(temp.next != slow){
-            TreeNode tempp = new TreeNode(temp.next.val);
-            tempp.left = left;
-            left = tempp;
-            temp = temp.next;
-        }
-        thead.left = left;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
 
+        ListNode prev = dummy;
+        ListNode next = head;
+        while (next != null){
+            if (next == slow){
+                prev.next = null;
+                break;
+            }
+            next = next.next;
+            prev = prev.next;
+        }
+
+        thead.left = sortedListToBST(head);
         thead.right = sortedListToBST(slow.next);
         return thead;
     }
