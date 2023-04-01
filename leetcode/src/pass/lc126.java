@@ -16,6 +16,7 @@ public class lc126 {
         Map<String, Set<String>> from = new HashMap<>();
         boolean found = bfs(beginWord, endWord, dict, steps, from);
         if (found){
+            System.out.println("hello");
             Deque<String> list = new ArrayDeque<>();
             list.add(endWord);
             backtrace(from, beginWord, endWord, list);
@@ -35,7 +36,7 @@ public class lc126 {
             for (int i = 0; i < size; i++){
                 String cur = queue.poll();
                 char[] cs = cur.toCharArray();
-                for (int j = 0; j < len; i++){
+                for (int j = 0; j < len; j++){
                     char ch = cs[j];
                     for (char c = 'a'; c <= 'z'; c++){
                         cs[j] = c;
