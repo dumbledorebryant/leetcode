@@ -4,42 +4,72 @@ import java.util.*;
 public class lc126 {
     List<List<String>> ans;
     int len;
-    int size = Integer.MAX_VALUE;
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         ans = new ArrayList<>();
-        if (!wordList.contains(endWord)) return ans;
         len = beginWord.length();
-        List<String> list = new ArrayList<>();
-        list.add(beginWord);
-        backtrace(beginWord, endWord, list, wordList);
+        Set<String> dict = new HashSet<>(wordList);
+        if (!dict.contains(endWord)) return ans;
+        dict.remove(beginWord);
+
+        Map<String, Integer> steps = new HashMap<>();
+        steps.put(beginWord, 0);
+        Map<String, Set<String>> from = new HashMap<>();
+        boolean found = bfs(beginWord, endWord, dict, steps, from);
+        if (found){
+            Deque<String> list = new ArrayDeque<>();
+            list.add(endWord);
+            backtrace(from, beginWord, endWord, list);
+        }
+        
         return ans;
     }
 
-    public void backtrace(String cur, String end, List<String> list, List<String> wordList){
-        if (cur.equals(end)){
-            if (list.size() < size){
-                ans.clear();
-                size = list.size();
+    public boolean bfs(String begin, String end, Set<String> dict, Map<String, Integer> steps, Map<String, Set<String>> from){
+        int step = 0;
+        boolean found = false;
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(begin);
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            step++;
+            for (int i = 0; i < size; i++){
+                String cur = queue.poll();
+                char[] cs = cur.toCharArray();
+                for (int j = 0; j < len; i++){
+                    char ch = cs[j];
+                    for (char c = 'a'; c <= 'z'; c++){
+                        cs[j] = c;
+                        String next = String.valueOf(cs);
+                        if (steps.containsKey(next) && steps.get(next) == step){
+                            from.get(next).add(cur);
+                        }
+                        if (!dict.contains(next)) continue;
+                        dict.remove(next);
+                        queue.offer(next);
+                        from.putIfAbsent(next, new HashSet<>());
+                        from.get(next).add(cur);
+                        steps.put(next, step);
+                        if (next.equals(end)){
+                            found = true;
+                        }
+                    }
+                    cs[j] = ch;
+                }
             }
+            if (found) break;
+        }
+        return found;
+    }
+
+    public void backtrace(Map<String, Set<String>> from, String begin, String cur, Deque<String> list){
+        if (cur.equals(begin)){
             ans.add(new ArrayList<>(list));
             return;
         }
-        if (list.size() > size){
-            return;
-        }
-        char[] cs = cur.toCharArray();
-        for (int i = 0; i < len; i++){
-            char ch = cs[i];
-            for (char c = 'a'; c <= 'z'; c++){
-                cs[i] = c;
-                String tmp = new String(cs);
-                if (!list.contains(tmp) && wordList.contains(tmp)){
-                    list.add(tmp);
-                    backtrace(tmp, end, list, wordList);
-                    list.remove(list.size() - 1);
-                }
-            }
-            cs[i] = ch;
+        for (String pre : from.get(cur)){
+            list.addFirst(pre);
+            backtrace(from, begin, pre, list);
+            list.removeFirst();
         }
     }
 }
