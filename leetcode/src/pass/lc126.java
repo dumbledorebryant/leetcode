@@ -73,4 +73,17 @@ public class lc126 {
             list.removeFirst();
         }
     }
+
+    public ListNode reverse(ListNode head){
+        ListNode pre, cur, next;
+        pre = head;
+        cur = head;
+        while (cur != null){
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
 }
