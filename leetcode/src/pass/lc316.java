@@ -36,4 +36,34 @@ public class lc316 {
         }
         return sb.reverse().toString();
     }
+
+    public String redo(String s){
+        Deque<Character> stack = new LinkedList<>();
+        char[] chrs = s.toCharArray();
+        int[] count = new int[26];
+        boolean[] inStack = new boolean[256];
+        for (char ch : chrs){
+            count[ch - 'a']++;
+        }
+        for (char ch : chrs){
+            if (inStack[ch]) continue;
+            inStack[ch] = true;
+            while (!stack.isEmpty() && stack.getLast() >= ch){
+                if (count[stack.getLast() - 'a'] > 0){
+                    inStack[stack.removeLast()] = false;
+                }
+            }
+            stack.addLast(ch);
+            count[ch - 'a']--;
+        }
+        StringBuilder sb = new StringBuilder();
+        System.out.println("hell0");
+        while (!stack.isEmpty()){
+            char ch = stack.removeFirst();
+            System.out.println(ch);
+            System.out.println(stack.size());
+            sb.append(ch);
+        }
+        return sb.toString();
+    }
 }
