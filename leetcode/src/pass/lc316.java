@@ -46,6 +46,7 @@ public class lc316 {
             count[ch - 'a']++;
         }
         for (char ch : chrs){
+            count[ch - 'a']--;
             if (inStack[ch]) continue;
             inStack[ch] = true;
             while (!stack.isEmpty() && stack.getLast() >= ch){
