@@ -4,7 +4,6 @@ import java.util.*;
 public class lc316 {
     public String removeDuplicateLetters(String s) {
         Stack<Character> stk = new Stack<>();
-
         // 维护一个计数器记录字符串中字符的数量
         // 因为输入为 ASCII 字符，大小 256 够用了
         int[] count = new int[256];
