@@ -14,6 +14,7 @@ public class lc261 {
         return uf.count() == 1;
     }
 }
+
 class UF {
     private int count;
     private int[] parent;
