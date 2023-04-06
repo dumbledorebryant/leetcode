@@ -1,6 +1,20 @@
 package pass;
 
-public class UF {
+import java.util.*;
+
+public class lc261 {
+    public boolean validTree(int n, int[][] edges) {
+        UF uf = new UF(n);
+        for (int[] edge : edges){
+            int from = edge[0];
+            int to = edge[1];
+            if (uf.connected(from, to)) return false;
+            uf.connected(from, to);
+        }
+        return uf.count() == 1;
+    }
+}
+class UF {
     private int count;
     private int[] parent;
 
