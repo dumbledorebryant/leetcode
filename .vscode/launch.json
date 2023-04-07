@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GetGroups",
+            "request": "launch",
+            "mainClass": "GetGroups",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Launch LongestSubarray",
             "request": "launch",
             "mainClass": "LongestSubarray",
