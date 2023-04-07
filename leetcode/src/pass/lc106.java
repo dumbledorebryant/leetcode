@@ -49,5 +49,6 @@ public class lc106 {
             }
         }
         return index;
+        
     }
 }
