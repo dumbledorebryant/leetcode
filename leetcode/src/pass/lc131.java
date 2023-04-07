@@ -3,45 +3,42 @@ package pass;
 import java.util.*;
 
 public class lc131 {
-    List<List<String>> ans;
+    List<List<String>> ans = new ArrayList<>();
     public List<List<String>> partition(String s) {
-        ans = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        List<String> list = new ArrayList<>();
-        backtrace(s, 0, sb, list);
+        backtrack(s, 0, new ArrayList<>(), new StringBuilder());
         return ans;
     }
-    public void backtrace(String s, int i, StringBuilder sb, List<String> list){
+    public void backtrack(String s, int i, List<String> path, StringBuilder sb){
         int length = s.length();
-        if (i >= length) {
-            String cur = sb.toString();
-            if (check(cur)){
-                list.add(cur);
-                ans.add(new ArrayList<>(list));
+        if (i == length){
+            String str = sb.toString();
+            if (check(str)){
+                path.add(str);
+                ans.add(new ArrayList<>(path));
+                path.remove(path.size() - 1);
             }
+            
             return;
         }
         char ch = s.charAt(i);
         sb.append(ch);
         String cur = sb.toString();
         if (check(cur)){
-            list.add(cur);
-            backtrace(s, i + 1, new StringBuilder(), list);
-            list.remove(list.size() - 1);
+            path.add(cur);
+            backtrack(s, i + 1, path, new StringBuilder());
+            path.remove(path.size() - 1);
         }
         
-        else backtrace(s, i + 1, sb, list);
+        backtrack(s, i + 1, path, sb);
+        sb.deleteCharAt(sb.length() - 1);
     }
+
     public boolean check(String s){
-        int len = s.length();
-        if (len == 1) return true;
-        if (len == 0) return false;
+        int size = s.length();
         int left = 0;
-        int right = len - 1;
+        int right = size - 1;
         while (left < right){
-            char lch = s.charAt(left);
-            char rch = s.charAt(right);
-            if (lch != rch) return false;
+            if (s.charAt(left) != s.charAt(right)) return false;
             else {
                 left++;
                 right--;
