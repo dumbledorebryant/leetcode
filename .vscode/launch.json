@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Solution",
+            "request": "launch",
+            "mainClass": "pass.Company.Tiktok.Solution",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
+            "name": "maxScore",
+            "request": "launch",
+            "mainClass": "pass.Company.Tiktok.maxScore",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "GetGroups",
             "request": "launch",
             "mainClass": "GetGroups",
