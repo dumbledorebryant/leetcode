@@ -42,7 +42,7 @@ class Solution {
         }
 
         if(nums[i] == nums[j-1]){
-            int sum = nums[i] + Math.min(
+            int sum = nums[j] + Math.min(
                 predictTheWinnerFrom(nums, i, j - 2), 
                 predictTheWinnerFrom(nums, i + 1, j - 1)
             );
