@@ -1,6 +1,6 @@
 package pass;
 
-public class lc115undone {
+public class lc115 {
     public int numDistinct(String s, String t) {
         int m = s.length();
         int n = t.length();
