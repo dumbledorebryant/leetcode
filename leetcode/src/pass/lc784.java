@@ -6,6 +6,7 @@ public class lc784 {
         backtrack(s, 0, new StringBuilder());
         return new ArrayList<>(set);
     }
+    
     public void backtrack(String s, int idx, StringBuilder sb){
         int length = s.length();
         if (idx == length){
