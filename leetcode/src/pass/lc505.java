@@ -1,5 +1,5 @@
 package pass;
-
+import java.util.*;
 public class lc505 {
     int m, n;
     int sx, sy;
@@ -50,5 +50,42 @@ public class lc505 {
         visited[i][j] = false;
         if (min == Integer.MAX_VALUE) return -1;
         return min;
+    }
+
+    public int sDistance(int[][] maze, int[] start, int[] destination) {
+        if (maze == null || maze.length == 0) return 0;
+        int row = maze.length;
+        int col = maze[0].length;
+        
+        int[][] dummy = new int[row][col];
+        for (int[] m : dummy) Arrays.fill(m, Integer.MAX_VALUE);
+        dummy[start[0]][start[1]] = 0;
+        
+        dfs(maze, dummy, start, destination);
+        return  dummy[destination[0]][destination[1]] == Integer.MAX_VALUE ? -1 : dummy[destination[0]][destination[1]];
+    }
+    
+    private void dfs(int[][] maze, int[][] dummy, int[] start, int[] destination) {
+        int row = maze.length;
+        int col = maze[0].length;
+        
+        
+        if (dummy[start[0]][start[1]] == dummy[destination[0]][destination[1]]) return;
+        
+        for (int[] d : dirs) {
+            int cnt = 0;
+            int x = start[0] + d[0];
+            int y = start[1] + d[1];
+            while (x >= 0 && x < row && y >= 0 && y < col && maze[x][y] == 0 && maze[x][y] != 1) {
+                x += d[0];
+                y += d[1];
+                cnt++;
+            }
+            
+            if (dummy[start[0]][start[1]] + cnt < dummy[x - d[0]][y - d[1]]) {
+                dummy[x - d[0]][y - d[1]] = dummy[start[0]][start[1]] + cnt;
+                dfs(maze, dummy, new int[]{x - d[0], y - d[1]}, destination);
+            }
+        }
     }
 }
