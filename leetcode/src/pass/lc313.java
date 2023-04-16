@@ -1,10 +1,36 @@
 package pass;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class lc313 {
     public int nthSuperUglyNumber(int n, int[] primes) {
-        return 0;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) ->{
+            return a[0] - b[0];
+        });
+
+        int size = primes.length;
+        for (int i = 0; i < size; i++){
+            pq.offer(new int[]{1, primes[i], 1});
+        }
+
+        int[] ugly = new int[n + 1];
+        int p = 1;
+
+        while (p <= n){
+            int[] pair = pq.poll();
+            int product = pair[0];
+            int prime = pair[1];
+            int ptr = pair[2];
+
+            if (product != ugly[p - 1]){
+                ugly[p] = product;
+                p++;
+            }
+            int[] next = new int[]{ugly[ptr] * prime, prime, ptr + 1};
+            pq.offer(next);
+        }
+
+        return ugly[n];
     }
     public int nSuperUglyNumber(int n, int[] primes) {
         Arrays.sort(primes);
