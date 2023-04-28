@@ -1,5 +1,5 @@
 package pass;
-
+import java.util.*;
 public class lc243 {
     public int shortestDistance(String[] wordsDict, String word1, String word2) {
         int n = wordsDict.length;
