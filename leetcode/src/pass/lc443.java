@@ -14,6 +14,7 @@ public class lc443 {
                 num++;
             }
             i--;
+            
             idx++;
             if (num > 1){
                 String str = String.valueOf(num);
