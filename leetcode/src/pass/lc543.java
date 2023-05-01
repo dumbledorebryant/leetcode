@@ -15,4 +15,17 @@ public class lc543 {
         max = Math.max(max, dia);
         return 1 + Math.max(l, r);
     }
+
+    int ans = 0;
+    public int diameterOfBinTree(TreeNode root) {
+        md(root);
+        return ans;
+    }
+    public int md(TreeNode root){
+        if (root == null) return 0;
+        int l = md(root.left);
+        int r = md(root.right);
+        ans = Math.max(ans, l + r);
+        return Math.max(l, r) + 1;
+    }
 }
