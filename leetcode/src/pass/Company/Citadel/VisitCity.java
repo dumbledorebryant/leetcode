@@ -1,3 +1,5 @@
+package pass.Company.Citadel;
+
 import java.util.Arrays;
 
 public class VisitCity {

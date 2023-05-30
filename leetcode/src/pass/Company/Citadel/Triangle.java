@@ -1,3 +1,5 @@
+package pass.Company.Citadel;
+
 public class Triangle {
     public static void main(String[] args){
         double[][] points = new double[][]{{1, 2}, {4,5}, {7, 9}};

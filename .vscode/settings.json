@@ -2,5 +2,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "leetcode/lib/junit-4.13.2.jar"
+    ],
+    "java.project.sourcePaths": [
+        "leetcode/src"
     ]
 }

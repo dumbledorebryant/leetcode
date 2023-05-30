@@ -1,4 +1,4 @@
-
+package pass.Company.Citadel;
 public class OddString {
     public static void main(String[] args){
         String[] arr = new String[]{"abc", "abcd"};
