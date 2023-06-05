@@ -2,7 +2,7 @@ package pass.Company.Beaconfire;
 import java.util.*;
 
 import pass.ListNode;
-public class Week1Mock {
+public class Week2Day2Mock {
     public List<String> formMinCoolStrings(String s, int k){
         char[] chrs = s.toCharArray();
         int length = chrs.length;
