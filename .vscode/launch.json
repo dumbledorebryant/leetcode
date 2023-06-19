@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Week5Day1Mock",
+            "request": "launch",
+            "mainClass": "pass.Company.Beaconfire.Week5Day1Mock",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "Week3Day1Mock",
             "request": "launch",
             "mainClass": "pass.Company.Beaconfire.Week3Day1Mock",
