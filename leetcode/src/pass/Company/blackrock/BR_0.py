@@ -36,7 +36,7 @@ while heap:
     visited[x] = n
     for y, d_cost in graph[x].items():
         heapq.heappush(heap, (cost * d_cost, y, n - 1))
-print(result)
+
 if result == []:
     print(-1.0)
 else:
