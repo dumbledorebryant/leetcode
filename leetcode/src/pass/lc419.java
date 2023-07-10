@@ -1,7 +1,9 @@
 package pass;
 
 public class lc419 {
+    
     int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
     public int countBattleships(char[][] board) {
         int m = board.length;
         int n = board[0].length;
