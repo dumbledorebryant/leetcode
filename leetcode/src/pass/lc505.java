@@ -69,7 +69,6 @@ public class lc505 {
         int row = maze.length;
         int col = maze[0].length;
         
-        
         if (dummy[start[0]][start[1]] == dummy[destination[0]][destination[1]]) return;
         
         for (int[] d : dirs) {
