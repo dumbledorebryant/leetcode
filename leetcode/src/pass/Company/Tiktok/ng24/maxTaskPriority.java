@@ -1,7 +1,7 @@
 package pass.Company.Tiktok.ng24;
 import java.util.*;
 public class maxTaskPriority {
-    public maximumPriority(int n, int[] priority, int x, int y){
+    public int maximumPriority(int n, int[] priority, int x, int y){
         Arrays.sort(priority);
         int length = priority.length;
         int left = 0; int right = length - 1;
