@@ -63,36 +63,6 @@ long getRes(const vector<int>& cost, const vector<int>& comp1, const vector<int>
             forCluster1++;
             forCluster2++;
         }
-        // else if(forCluster1<minComp)
-        // {
-        //     long for1 = idx1<cluster1.size()? cluster1[idx1]:INT_MAX;
-        //     long forb = bidx<clusterb.size()? clusterb[bidx]:INT_MAX;
-        //     if(for1<forb)
-        //     {
-                
-        //         res += for1;
-        //         idx1++;
-        //     }else
-        //     {
-        //         res+= forb;
-        //         bidx++;
-        //     }
-        //     forCluster1++;
-        // }else if (forCluster2<minComp) {
-        //     long for2 = idx2<cluster2.size()? cluster2[idx2]:INT_MAX;
-        //     long forb = bidx<clusterb.size()? clusterb[bidx]:INT_MAX;
-        //     if(for2<forb)
-        //     {
-                
-        //         res += for2;
-        //         idx2++;
-        //     }else
-        //     {
-        //         res+= forb;
-        //         bidx++;
-        //     }
-        //     forCluster2++;
-        // }
     }
     return res;
 }
