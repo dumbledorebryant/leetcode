@@ -103,7 +103,9 @@ public class lc267 {
             map.put(k, count-2);
             backtrack(res, map, k+string+k, length);
             map.put(k, count);
+            String num;
         }
         return;
     }
+    
 }
