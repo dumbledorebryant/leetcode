@@ -10,7 +10,6 @@ public class lc1008 {
         if (i > j) return null;
         int rnum = nodes[i];
         TreeNode root = new TreeNode(rnum);
-        boolean flag = true;
         int k = i + 1;
         for (; k <= j; k++){
             int num = nodes[k];
