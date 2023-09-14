@@ -1,5 +1,9 @@
 package pass;
-
+class Node{
+    Node left;
+    Node right;
+    Node parent;
+}
 public class lc510 {
     public Node inorderSuccessor(Node node) {
         if (node == null) return null;
