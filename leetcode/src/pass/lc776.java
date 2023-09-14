@@ -1,3 +1,4 @@
+package pass;
 public class lc776 {
     public TreeNode[] splitBST(TreeNode root, int target) {
         TreeNode[] ans = new TreeNode[2];
