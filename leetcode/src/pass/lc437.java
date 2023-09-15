@@ -1,5 +1,7 @@
 package pass;
 
+import java.util.*;
+
 import pass.TreeNode;
 
 public class lc437 {
@@ -40,4 +42,6 @@ public class lc437 {
         psum(root.left, cur, t);
         psum(root.right, cur, t);
     }
+    PriorityQueue<Integer> pq = new PriorityQueue<>();
+    
 }
