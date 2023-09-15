@@ -23,17 +23,21 @@ public class lc437 {
         if (start.left != null) dfsroot(start.left, left);
         if (start.right != null) dfsroot(start.right, left);
     }
-    public void test(){
-        TreeNode node1 = new TreeNode(1);
-        TreeNode node2 = new TreeNode(2);
-        TreeNode node3 = new TreeNode(3);
-        TreeNode node4 = new TreeNode(4);
-        TreeNode node5 = new TreeNode(5);
-        node1.right = node2;
-        node2.right = node3;
-        node3.right = node4;
-        node4.right = node5;
-        System.out.println(pathSum(node1, 3));
-        return;
+    int ans = 0;
+    public int pathSum2(TreeNode root, int targetSum) {
+        if (root == null) return 0;
+        psum(root, 0, targetSum);
+        pathSum(root.left, targetSum);
+        pathSum(root.right, targetSum);
+        return ans;
+    }
+
+    public void psum(TreeNode root, long pre, int t){
+        if (root == null) return;
+        long num = root.val;
+        long cur = pre + num;
+        if (cur == t) ans++;
+        psum(root.left, cur, t);
+        psum(root.right, cur, t);
     }
 }
