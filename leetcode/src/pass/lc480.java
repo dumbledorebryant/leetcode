@@ -1,6 +1,6 @@
 package pass;
 import java.util.*;
-public class lc480undone {
+public class lc480 {
     public double[] medianSlidingWindow(int[] nums, int k) {
         PriorityQueue<Integer> l = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
         PriorityQueue<Integer> r = new PriorityQueue<>((a, b) -> Integer.compare(a, b));
