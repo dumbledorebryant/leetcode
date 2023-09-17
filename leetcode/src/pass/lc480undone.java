@@ -48,4 +48,75 @@ public class lc480undone {
             return l.peek()/2.0 + r.peek()/2.0;
         }
     }
+
+    public double[] medianSlidingWindow222(int[] nums, int k) {
+        
+        List<Integer> windows = new ArrayList<>();
+
+        for (int i = 0; i < k; i++) {
+            windows.add(nums[i]);
+        }
+
+        double[] result = new double[nums.length - k + 1];
+        Collections.sort(windows);
+        result[0] = getmid(windows, k);
+
+        for (int i = 0 ; i < nums.length - k; i++) {
+            windows.remove((Object)nums[i]);
+            int j = 0;
+            int tmp = nums[i + k];
+            binarySearchAdd(windows, tmp);
+            result[i + 1] = getmid(windows, k);
+        }
+
+        return result;
+    }
+
+    public static double getmid(List<Integer> wondows, int k) {
+    if (k % 2 == 1) {
+        double d = wondows.get(k / 2);
+        return d;
+    } else {
+        double d = wondows.get( k / 2);
+        double d1 = wondows.get(k / 2 - 1);
+        return (d + d1) / 2;
+    }
+    }
+
+    public static void binarySearchAdd(List<Integer> windows, int tmp) {
+    int left = 0;
+    int right = windows.size() - 1;
+    int flag = 0;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        int num = windows.get(mid);
+        if (num < tmp) {
+            left = mid + 1;
+            flag = 1;
+        } else if (num > tmp) {
+            right = mid - 1;
+            flag = 2;
+        } else if (num == tmp) {
+            windows.add(mid, tmp);
+            flag = 3;
+            break;
+        }
+    }
+
+    if (flag == 1) {
+        if (left < windows.size()) {
+            windows.add(left, tmp);
+        } else {
+            windows.add(tmp);
+        }
+    } else if (flag == 2) {
+        if (right < 0) {
+            windows.add(0, tmp);
+        } else {
+            windows.add(left, tmp);
+        }
+    } else if (flag == 0) {
+        windows.add(tmp);
+    }
+    }
 }
