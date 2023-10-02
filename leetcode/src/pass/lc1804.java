@@ -56,6 +56,7 @@ class Trie {
         }
         return count(cur);
     }
+    
     int count(Node node){
         int ans = node.count;
         for (Node child : node.children){
