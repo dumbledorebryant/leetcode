@@ -7,6 +7,7 @@ import java.util.Random;
 public class lc384 {
     int[] nums;
     Random rand = new Random();
+    
     public lc384(int[] nums) {
         this.nums = nums;
     }
