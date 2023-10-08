@@ -1,6 +1,7 @@
 package pass;
+import java.util.*;
 
-public class 1218 {
+public class lc1218 {
     public int longestSubsequence(int[] arr, int difference) {
         int n = arr.length;
         Map<Integer, Integer> map = new HashMap<>();
