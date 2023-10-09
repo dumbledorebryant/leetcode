@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class lc894 {
     Map<Integer, List<TreeNode>> map = new HashMap<>();
+    
     public List<TreeNode> allPossibleFBT(int n) {
         return helper(1, n);
     }
