@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class lc997 {
-    
     public int findJudge(int n, int[][] trust) {
         int[] count = new int[n];
         Set<Integer> set = new HashSet<>();
