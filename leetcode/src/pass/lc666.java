@@ -1,7 +1,10 @@
 package pass;
 
+import java.util.Arrays;
+
 public class lc666 {
-    int[][] path = new int[5][9];
+    public int pathSum(int[] nums) {
+        int[][] path = new int[5][9];
         for (int[] p : path) Arrays.fill(p, -1);
         for (int n : nums){
             path[n / 100][(n % 100) / 10] = n % 10;
