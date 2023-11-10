@@ -1,19 +1,12 @@
 package pass;
 
+import java.util.Arrays;
+
 public class lc462 {
-    int sum = 0;
-    for (int num : nums){
-        sum += num;
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+        int operations = 0, mid = nums[nums.length/2];
+        for (int num: nums) operations += Math.abs(mid - num);
+        return operations;
     }
-    int n = nums.length;
-    int left = sum % n;
-    int avg = sum / n;
-    if (left > n - left){
-        avg++;
-    }
-    int ans = 0;
-    for (int num : nums){
-        ans += Math.abs(num - avg);
-    }
-    return ans;
 }
