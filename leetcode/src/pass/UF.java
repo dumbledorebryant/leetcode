@@ -3,12 +3,14 @@ package pass;
 public class UF {
     private int count;
     private int[] parent;
+    private int[] sizes;
 
     public UF(int n){
         this.count = n;
         parent = new int[n];
         for (int i = 0; i < n; i++){
             parent[i] = i;
+            sizes[i] = 1;
         }
     }
     public void union(int p, int q){
@@ -17,6 +19,7 @@ public class UF {
         if (rootP == rootQ) return;
         parent[rootP] = rootQ;
         count--;
+        sizes[rootQ] += sizes[rootP];
     }
 
     public boolean connected(int p, int q){
