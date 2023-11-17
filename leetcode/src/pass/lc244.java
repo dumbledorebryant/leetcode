@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class lc244 {
     Map<String, List<Integer>> map = new HashMap<>();
-    public WordDistance(String[] wordsDict) {
+    public lc244(String[] wordsDict) {
         int n = wordsDict.length;
         for (int i = 0; i < n; i++){
             String str = wordsDict[i];
