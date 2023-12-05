@@ -1,6 +1,7 @@
 package pass;
 
 public class lc663 {
+    
     TreeNode head;
     public boolean checkEqualTree(TreeNode root) {
         head = root;
