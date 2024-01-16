@@ -7,7 +7,7 @@ public class lc346 {
     Deque<Integer> dq = new ArrayDeque<>();
     int sum = 0;
     int sz;
-    public MovingAverage(int size) {
+    public lc346(int size) {
         sz = size;
     }
     
