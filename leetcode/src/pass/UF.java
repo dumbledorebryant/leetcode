@@ -8,6 +8,7 @@ public class UF {
     public UF(int n){
         this.count = n;
         parent = new int[n];
+        sizes = new int[n];
         for (int i = 0; i < n; i++){
             parent[i] = i;
             sizes[i] = 1;

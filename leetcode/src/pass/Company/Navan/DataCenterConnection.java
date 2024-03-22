@@ -1,7 +1,93 @@
 package pass.Company.Navan;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class DataCenterConnection {
+    static class UF{
+        private int count;
+        private int[] parent;
+        
+        public UF(int n){
+            this.count = n;
+            parent = new int[n];
+            for (int i = 0; i < n; i++){
+                parent[i] = i;
+            }
+        }
+        
+        public void union(int p, int q){
+            int rp = find(p);
+            int rq = find(q);
+            if (rp == rq){
+                return;
+            }
+            parent[rp] = rq;
+            count--;
+        }
+        
+        public boolean connected(int p, int q){
+            return find(p) == find(q);
+        }
+        
+        private int find(int node){
+            if (parent[node] != node){
+                parent[node] = find(parent[node]);
+            }
+            return parent[node];
+        }
+    }
     
+    static class Edge implements Comparable<Edge>{
+        int from;
+        int to;
+        int weight;
+        
+        public Edge(int f, int t, int w){
+            from = f;
+            to = t;
+            weight = w;
+        }
+        
+        @Override
+        public int compareTo(Edge e){
+            return this.weight - e.weight;
+        }
+    }
+
+    public static int getMinMaxLatency(int gNodes, List<Integer> gFrom, List<Integer> gTo, List<Integer> gWeight, int k) {
+        int n = gWeight.size();
+        if (n == 0) return 0;
+        UF uf = new UF(gNodes);
+        List<Edge> edges = new ArrayList<>();
+        for (int i = 0; i < n; i++){
+            int from = gFrom.get(i) - 1;
+            int to = gTo.get(i) - 1;
+            int weight = gWeight.get(i);
+            Edge edge = new Edge(from, to, weight);
+            edges.add(edge);
+        }
+        
+        Collections.sort(edges);
+        List<Integer> list = new ArrayList<>();
+        for (Edge edge : edges){
+            int from = edge.from;
+            int to = edge.to;
+            if (!uf.connected(from, to)){
+                uf.union(from, to);
+                list.add(edge.weight);
+            }
+        }
+        
+        if (list.size() < gNodes - 1){
+            return -1;
+        }
+        Collections.sort(list);
+        System.out.println(list);
+        
+        return list.get(list.size() - k); 
+    }  
 }
 /*
 class UnionFind:
