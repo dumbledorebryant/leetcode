@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StreamAPI",
+            "request": "launch",
+            "mainClass": "pass.ICC.StreamAPI",
+            "projectName": "leetcode_17974a0f"
+        },
+        {
+            "type": "java",
             "name": "currency",
             "request": "launch",
             "mainClass": "pass.Company.Alipay.currency",
