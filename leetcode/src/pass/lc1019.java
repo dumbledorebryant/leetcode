@@ -1,4 +1,5 @@
 package pass;
+import java.util.*;
 
 public class lc1019 {
     public int[] nextLargerNodes(ListNode head) {
