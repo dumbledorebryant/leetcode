@@ -1,4 +1,5 @@
 package pass;
+import java.util.*;
 
 public class lc823 {
     final static int mod = (int)(1e9 + 7);
