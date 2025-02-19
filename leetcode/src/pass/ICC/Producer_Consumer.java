@@ -1,6 +1,7 @@
+package pass.ICC;
 import java.util.*;
 
-public class App  {
+public class Producer_Consumer {
     
     public static void main(String[] args) throws Exception 
     {
@@ -73,6 +74,3 @@ class Consumer implements Runnable{
         }
     }
 }
-
-
-
